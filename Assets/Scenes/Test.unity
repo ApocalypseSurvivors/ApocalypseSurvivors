@@ -4258,7 +4258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b909a02bd36695a9aaca6cf2114604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
 --- !u!114 &6174391805464565965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4271,13 +4270,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618f9ab40c56ca4438d3a53036e0d785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 0
-  _animator: {fileID: 0}
-  _takeDamageAnimationTriggerVarName: 
-  _dieAnimationTriggerVarName: 
+  _life: 100
+  _animator: {fileID: 6174391805464565960}
+  _takeDamageAnimationTriggerVarName: Damage
+  _dieAnimationTriggerVarName: Die1
   _takeDamageAudioClip: {fileID: 0}
   _dieAudioClip: {fileID: 0}
-  _destroyAfterDeadSeconds: -1
+  _destroyAfterDeadSeconds: 10
   _automaticDamageHandling: 1
   _automaticDeadHandling: 1
 --- !u!54 &6174391805464565966
