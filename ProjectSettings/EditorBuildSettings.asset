@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UXRSample.unity
     guid: a706e118b348853bea0d0dc0a26754f6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test.unity
     guid: 4d2a4c4809c00d080a123baec7b57bc5
   - enabled: 0

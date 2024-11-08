@@ -27,6 +27,7 @@ public class Witch : MonoBehaviour
             } else {
                 animator.SetTrigger("Die2");
             }
+        } else {
         }
     }
 
