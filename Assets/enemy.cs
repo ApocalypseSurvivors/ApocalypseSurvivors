@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent navAgent;
     private UxrActor actor;
     private Rigidbody rb;
+    [SerializeField] float bulletForceMultiplier = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class Enemy : MonoBehaviour
         actor = GetComponent<UxrActor>();
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        // rb.isKinematic = true;   
+        rb.isKinematic = true;   
         actor.DamageReceived += HandleDamage;
     }
 
@@ -32,8 +33,8 @@ public class Enemy : MonoBehaviour
             //     animator.SetTrigger("Die2");
             // }
         } else {
-            // navAgent.enabled = false;              // Disable NavMeshAgent
-            // rb.isKinematic = false;  
+            navAgent.enabled = false;              // Disable NavMeshAgent
+            rb.isKinematic = false;  
             if (e.DamageType == UxrDamageType.ProjectileHit) {
                 Vector3 source = e.ActorSource.transform.position;
                 Vector3 hitpoint = e.RaycastHit.point;
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
                     Debug.Log("Debug null rb ");
                 }
                 Debug.Log("Debug Force: " + (hitpoint - source).normalized * 100);
-                rb.AddForceAtPosition((hitpoint - source).normalized * 100, e.RaycastHit.transform.position);
+                rb.AddForceAtPosition((hitpoint - source).normalized * bulletForceMultiplier, e.RaycastHit.transform.position);
             }
         }
     }
@@ -79,8 +80,8 @@ public class Enemy : MonoBehaviour
     {
         // Debug.Log("Debug ReactivateNavMeshAgent");
         // Re-enable NavMeshAgent and switch back to kinematic Rigidbody
-        // rb.isKinematic = true;
-        // navAgent.enabled = true;
+        rb.isKinematic = true;
+        navAgent.enabled = true;
     }
 
     private void OnDestroy()
