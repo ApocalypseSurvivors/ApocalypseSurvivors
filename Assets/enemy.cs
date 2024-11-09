@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UltimateXR.Mechanics.Weapons;
 
-public class witch : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private Animator animator;
     private NavMeshAgent navAgent;
@@ -17,14 +17,14 @@ public class witch : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         actor = GetComponent<UxrActor>();
         rb = GetComponent<Rigidbody>();
-        // rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         // rb.isKinematic = true;   
         actor.DamageReceived += HandleDamage;
     }
 
     void HandleDamage(object sender, UxrDamageEventArgs e) {
         Debug.Log("Debug: Damage, actor life " + actor.Life);
-        if (actor.Life <= 0) {
+        if (actor.IsDead) {
             int randomValue = Random.Range(0, 2);
             if (randomValue == 0) {
                 animator.SetTrigger("Die1");
@@ -32,17 +32,15 @@ public class witch : MonoBehaviour
                 animator.SetTrigger("Die2");
             }
         } else {
-                Debug.Log("Add force1");
             // navAgent.enabled = false;              // Disable NavMeshAgent
             // rb.isKinematic = false;  
             if (e.DamageType == UxrDamageType.ProjectileHit) {
-                Debug.Log("Debug Add force ");
                 Vector3 source = e.ActorSource.transform.position;
                 Vector3 hitpoint = e.RaycastHit.point;
                 if (rb == null) {
                     Debug.Log("Debug null rb ");
                 }
-                Debug.Log("Force: " + (hitpoint - source).normalized * 100);
+                Debug.Log("Debug Force: " + (hitpoint - source).normalized * 100);
                 rb.AddForceAtPosition((hitpoint - source).normalized * 100, e.RaycastHit.transform.position);
             }
         }
@@ -53,26 +51,33 @@ public class witch : MonoBehaviour
     void Update()
     {
         if (!actor.IsDead ) {
-            // if (navAgent.velocity.magnitude > 0.1f) {
-            //     animator.SetBool("isWalking", true);
-            // } else {
-            //     animator.SetBool("isWalking", false);
-            // }
+                Vector3 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+                if (target == null) {
+                    Debug.Log("Debug null Player ");
+                }
+                Debug.Log("Debug set Player ");
+                navAgent.destination = target;
+
+                if (navAgent.velocity.magnitude > 0.1f) {
+                    animator.SetBool("isWalking", true);
+                } else {
+                    animator.SetBool("isWalking", false);
+                }
             if (rb.IsSleeping())
             {
                 ReactivateNavMeshAgent();
             } else {
-                Debug.Log("Debug Not sleeping");
+                // navAgent.enabled = false;              // Disable NavMeshAgent
             }
         } else {
             // animator.SetBool("isWalking", false);
-            // navAgent.enabled = false;
+            navAgent.enabled = false;
         }
         
     }
   private void ReactivateNavMeshAgent()
     {
-        Debug.Log("ReactivateNavMeshAgent");
+        // Debug.Log("Debug ReactivateNavMeshAgent");
         // Re-enable NavMeshAgent and switch back to kinematic Rigidbody
         // rb.isKinematic = true;
         // navAgent.enabled = true;
