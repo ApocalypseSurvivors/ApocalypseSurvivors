@@ -710,8 +710,7 @@ PrefabInstance:
       propertyPath: _dieAnimationTriggerVarName
       value: Die2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6985763578751046634, guid: 91616459711aae55599a206a12ae4653, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -838,25 +837,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e63ad7f90834384dab066d8da8cabad, type: 3}
---- !u!1 &610183143 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1799990697542046995, guid: 91616459711aae55599a206a12ae4653,
-    type: 3}
-  m_PrefabInstance: {fileID: 8567192759152915017}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &610183151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610183143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b40b483b5c51bafa805ae4e69190bc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletForceMultiplier: 40
 --- !u!1 &688916831
 GameObject:
   m_ObjectHideFlags: 0
@@ -11334,15 +11314,34 @@ PrefabInstance:
       value: Die2
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6985763578751046634, guid: 91616459711aae55599a206a12ae4653, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1799990697542046995, guid: 91616459711aae55599a206a12ae4653,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 610183151}
+      addedObject: {fileID: 8567192759152915019}
   m_SourcePrefab: {fileID: 100100000, guid: 91616459711aae55599a206a12ae4653, type: 3}
+--- !u!1 &8567192759152915018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1799990697542046995, guid: 91616459711aae55599a206a12ae4653,
+    type: 3}
+  m_PrefabInstance: {fileID: 8567192759152915017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8567192759152915019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567192759152915018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b40b483b5c51bafa805ae4e69190bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletForceMultiplier: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
