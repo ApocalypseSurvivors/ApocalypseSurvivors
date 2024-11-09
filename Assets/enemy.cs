@@ -26,11 +26,11 @@ public class Enemy : MonoBehaviour
         Debug.Log("Debug: Damage, actor life " + actor.Life);
         if (actor.IsDead) {
             int randomValue = Random.Range(0, 2);
-            if (randomValue == 0) {
-                animator.SetTrigger("Die1");
-            } else {
-                animator.SetTrigger("Die2");
-            }
+            // if (randomValue == 0) {
+            //     animator.SetTrigger("Die1");
+            // } else {
+            //     animator.SetTrigger("Die2");
+            // }
         } else {
             // navAgent.enabled = false;              // Disable NavMeshAgent
             // rb.isKinematic = false;  
