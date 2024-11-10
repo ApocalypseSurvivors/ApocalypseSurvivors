@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     }
 
     void HandleDamage(object sender, UxrDamageEventArgs e) {
-        Debug.Log("Debug: Damage, actor life " + actor.Life);
+        // Debug.Log("Debug: Damage, actor life " + actor.Life);
         if (actor.IsDead) {
             int randomValue = Random.Range(0, 2);
             // if (randomValue == 0) {
@@ -39,9 +39,9 @@ public class Enemy : MonoBehaviour
                 Vector3 source = e.ActorSource.transform.position;
                 Vector3 hitpoint = e.RaycastHit.point;
                 if (rb == null) {
-                    Debug.Log("Debug null rb ");
+                    // Debug.Log("Debug null rb ");
                 }
-                Debug.Log("Debug Force: " + (hitpoint - source).normalized * 100);
+                // Debug.Log("Debug Force: " + (hitpoint - source).normalized * 100);
                 rb.AddForceAtPosition((hitpoint - source).normalized * bulletForceMultiplier, e.RaycastHit.transform.position);
             }
         }
@@ -54,9 +54,9 @@ public class Enemy : MonoBehaviour
         if (!actor.IsDead ) {
                 Vector3 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
                 if (target == null) {
-                    Debug.Log("Debug null Player ");
+                    // Debug.Log("Debug null Player ");
                 }
-                Debug.Log("Debug set Player ");
+                // Debug.Log("Debug set Player ");
                 navAgent.destination = target;
 
                 if (navAgent.velocity.magnitude > 0.1f) {

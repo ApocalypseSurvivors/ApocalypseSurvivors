@@ -8,11 +8,25 @@ public class JumpScript : MonoBehaviour
     public float jumpForce = 5f;      // Adjustable jump force
     private bool isGrounded;          // Checks if the player is on the ground
     private Rigidbody rb;
+    [SerializeField, Range(0f, 10f)] private float heightOffset;
+
+    private void OnDestroy()
+    {
+        // UxrAvatar.AvatarUpdated -= UxrAvatarOnGlobalAvatarMoved;
+    }
+
+    // private void UxrAvatarOnGlobalAvatarMoved(object sender, UxrAvatarUpdateEventArgs e)
+    // {
+    //     UxrAvatar.LocalAvatar.transform.position = e.NewPosition + Vector3.up * heightOffset;
+    // }
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+        // UxrAvatar.AvatarMoved += UxrAvatarOnGlobalAvatarMoved;
+
         isGrounded = true;
     }
 
