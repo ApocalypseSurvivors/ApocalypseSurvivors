@@ -10,22 +10,38 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent navAgent;
     private UxrActor actor;
     private Rigidbody rb;
+    [SerializeField] float maxHealth = 100;
     [SerializeField] float bulletForceMultiplier = 10;
+    [SerializeField] HealthBar healthBar;
+
+    private void awake() {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         actor = GetComponent<UxrActor>();
+        actor.Life = maxHealth;
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.isKinematic = true;   
         actor.DamageReceived += HandleDamage;
+
+        healthBar = GetComponentInChildren<HealthBar>();
+        healthBar.UpdateHealthBar(actor.Life, maxHealth); 
     }
 
     void HandleDamage(object sender, UxrDamageEventArgs e) {
+        float damage = e.Damage; 
         // Debug.Log("Debug: Damage, actor life " + actor.Life);
-        if (actor.IsDead) {
+        if (healthBar != null) {
+            healthBar.UpdateHealthBar(actor.Life, maxHealth); 
+        } else {
+            Debug.Log("Debug null healthBar");
+        }
+        if (e.Dies) {
             int randomValue = Random.Range(0, 2);
             // if (randomValue == 0) {
             //     animator.SetTrigger("Die1");
