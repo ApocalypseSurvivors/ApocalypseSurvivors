@@ -4445,7 +4445,17 @@ PrefabInstance:
     - target: {fileID: 6800758493993517628, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
         type: 3}
       propertyPath: m_Name
-      value: player Variant
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689334380499834822, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
+        type: 3}
+      propertyPath: m_Antialiasing
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689334380499834822, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9163371325172464513, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
         type: 3}
