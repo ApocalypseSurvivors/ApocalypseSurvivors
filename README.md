@@ -22,7 +22,9 @@ The HW6 Escape Room is 3 rooms concatenated together. A player enters the first 
 
 ## Puzzle 2 (Kangcheng Chen)
 ### Description
-Puzzle 2, created by Kangcheng Chen,
+Puzzle 2, created by Kangcheng Chen, is a key-finding game.
+In the room, the clue is a photo on the wall. From the clue, the player needs to grab the correct book and place it in the right place to unlock the door. 
+The game works as intended. However, given more time, I could have polished it by adding better models(book and shelf models) and diversions. The clue does not have to be a photo but can be any object related to the book.
 
 ### Instructions
 1. [Add specific instructions for running or solving Puzzle 2 here.]
