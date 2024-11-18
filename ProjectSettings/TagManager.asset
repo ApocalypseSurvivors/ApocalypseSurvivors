@@ -6,11 +6,12 @@ TagManager:
   tags:
   - enemy
   - Key
+  - painting
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - avatar
   - Water
   - UI
   - 
