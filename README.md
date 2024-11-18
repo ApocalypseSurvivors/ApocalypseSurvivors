@@ -28,8 +28,12 @@ Puzzle 2, created by Kangcheng Chen,
 1. [Add specific instructions for running or solving Puzzle 2 here.]
 
 
-## Puzzle 3
+## Puzzle 3 (Xi Peng)
 ### Description
+Puzzle 3, created by Xi Peng, is followed as a logic deduction game.
+There are two doors (one red and one black) in the room. The player must select the correct one to escape the room.
+The secret of the correct answer is hidden on the wall. Three pioneers left some clues to cue the player for the right way out.
+However, the pioneer may lie to you. Don't get tricked by the evil!
 
 
 ## Contributing
