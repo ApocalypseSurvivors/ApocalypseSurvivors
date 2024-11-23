@@ -59,7 +59,10 @@ public class Enemy : MonoBehaviour
                 }
                 // Debug.Log("Debug Force: " + (hitpoint - source).normalized * 100);
                 rb.AddForceAtPosition((hitpoint - source).normalized * bulletForceMultiplier, e.RaycastHit.transform.position);
-                CreateBloodSprayEffect(hitpoint);
+                if (!actor.IsDead)
+                {
+                    CreateBloodSprayEffect(hitpoint);
+                }
             }
         }
     }
