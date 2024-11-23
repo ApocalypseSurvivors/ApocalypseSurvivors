@@ -34,4 +34,11 @@ public class cryptoAttackState : StateMachineBehaviour
             animator.SetBool("isAttacking", false);
         }
     }
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+
+    }
+
 }

@@ -5,10 +5,9 @@ using UnityEngine;
 public class cryptoIdleState : StateMachineBehaviour
 {
     float timer;
-    public float idleTime = 5f;
-
+    [SerializeField] float idleTime = 4f;
     Transform player;
-    public float detectionAreaRadius = 18f;
+    [SerializeField] float detectionAreaRadius = 18f;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
