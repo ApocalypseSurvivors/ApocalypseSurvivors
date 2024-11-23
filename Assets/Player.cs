@@ -36,4 +36,18 @@ public class Player : MonoBehaviour
             Debug.Log("Debug null healthBar");
         }
     }
+
+    public void TakeDamage(int damageAmount)
+    {
+        actor.Life -= damageAmount;
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("enemy_hand"))
+        {
+            TakeDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
+        }
+    }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - syringe
   - Waypoints
+  - enemy_hand
   layers:
   - Default
   - TransparentFX
