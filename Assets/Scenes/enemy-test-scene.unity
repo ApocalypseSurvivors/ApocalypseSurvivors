@@ -28795,7 +28795,7 @@ MonoBehaviour:
   _life: 100
   _animator: {fileID: 480858942948835761}
   _takeDamageAnimationTriggerVarName: Damage
-  _dieAnimationTriggerVarName: Die2
+  _dieAnimationTriggerVarName: Die1
   _takeDamageAudioClip: {fileID: 8300000, guid: b771cd0787c16e64e8e8ba11c3c83734,
     type: 3}
   _dieAudioClip: {fileID: 8300000, guid: 1d92c5ac0e056b045b4461b147f95be5, type: 3}
