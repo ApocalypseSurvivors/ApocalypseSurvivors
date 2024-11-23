@@ -6,8 +6,10 @@ using UltimateXR.Mechanics.Weapons;
 public class Player : MonoBehaviour
 {
     private UxrActor actor;
+    private Rigidbody rb;
     [SerializeField] float maxHealth = 100;
     [SerializeField] PlayerHealthBar healthBar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +17,7 @@ public class Player : MonoBehaviour
         actor = GetComponent<UxrActor>();
         actor.Life = maxHealth;
 
+        rb = GetComponent<Rigidbody>();
         healthBar = GetComponentInChildren<PlayerHealthBar>();
         
         if (healthBar != null) {  
@@ -43,7 +46,7 @@ public class Player : MonoBehaviour
         healthBar.UpdateHealthBar(actor.Life, maxHealth);
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         actor.Life -= damageAmount;
         UpdateHealthBar();
@@ -56,7 +59,11 @@ public class Player : MonoBehaviour
         {
             
             // Debug.Log("Debug Damage");
-            TakeDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
+            float damageAmount = other.gameObject.GetComponent<crypto_enemy_hand>().damage * 0.5f;
+            TakeDamage(damageAmount);
+
+            Vector3 knockbackDirection = (transform.position - other.transform.position).normalized;
+            rb.AddForce(knockbackDirection * 1f, ForceMode.Impulse);
             // actor.ReceiveDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
         }
     }
