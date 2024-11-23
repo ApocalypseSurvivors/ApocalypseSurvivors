@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private UxrActor actor;
     [SerializeField] float maxHealth = 100;
     [SerializeField] PlayerHealthBar healthBar;
+    public float test_hp;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         } else {
             Debug.Log("Debug null healthBar");
         }
+        test_hp = actor.Life;
     }
 
     public void TakeDamage(int damageAmount)
