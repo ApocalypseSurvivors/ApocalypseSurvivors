@@ -14295,6 +14295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 0}
+  test_hp: 0
 --- !u!54 &1097826969
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16364,7 +16365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crypto_Enemy_Hand: {fileID: 1182746274}
-  crypto_enemy_damage: 25
+  crypto_enemy_damage: 10
 --- !u!1 &1532630706
 GameObject:
   m_ObjectHideFlags: 0
@@ -18521,6 +18522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 0}
+  test_hp: 0
 --- !u!1 &336145918848270170
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     private UxrActor actor;
     [SerializeField] float maxHealth = 100;
     [SerializeField] PlayerHealthBar healthBar;
-    public float test_hp;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +19,7 @@ public class Player : MonoBehaviour
         
         if (healthBar != null) { healthBar.UpdateHealthBar(actor.Life, maxHealth); 
         } else {
-            Debug.Log("Debug null healthBar");
+            Debug.Log("Debug null healthBar 1");
         }
  
     }
@@ -34,22 +33,23 @@ public class Player : MonoBehaviour
         }
         if (healthBar != null) { healthBar.UpdateHealthBar(actor.Life, maxHealth); 
         } else {
-            Debug.Log("Debug null healthBar");
+            Debug.Log("Debug null healthBar 2");
         }
-        test_hp = actor.Life;
     }
 
-    public void TakeDamage(int damageAmount)
-    {
-        actor.Life -= damageAmount;
-
-    }
+    // public void TakeDamage(int damageAmount)
+    // {
+    //     actor.Life -= damageAmount;
+    //
+    // }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("enemy_hand"))
         {
-            TakeDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
+            
+            Debug.Log("Debug Damage");
+            actor.ReceiveDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
         }
     }
 }

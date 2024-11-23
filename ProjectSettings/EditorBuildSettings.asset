@@ -17,12 +17,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestSky.unity
     guid: 3a34a0f1df6403a928bd8a97d63b521d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelTest.unity
     guid: ac49d43fe9a2aae23b087d722eddd654
   - enabled: 0
     path: Assets/Scenes/StreetScene.unity
     guid: de2c6d2cac7cf7a4da54f60a714c5698
+  - enabled: 1
+    path: Assets/Scenes/enemy-test-scene.unity
+    guid: 9c2215ec6e6cc984fb6ec310a6b6d040
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ccc254513c83fa361a9968a261d5eb28,
       type: 2}
