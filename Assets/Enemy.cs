@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxHealth = 100;
     [SerializeField] float bulletForceMultiplier = 10;
     [SerializeField] HealthBar healthBar;
-
+    public GameObject bloodSprayEffect;
     private void awake() {
     }
 
@@ -59,8 +59,18 @@ public class Enemy : MonoBehaviour
                 }
                 // Debug.Log("Debug Force: " + (hitpoint - source).normalized * 100);
                 rb.AddForceAtPosition((hitpoint - source).normalized * bulletForceMultiplier, e.RaycastHit.transform.position);
+                CreateBloodSprayEffect(hitpoint);
             }
         }
+    }
+
+    void CreateBloodSprayEffect(Vector3 hitpoint)
+    {
+        GameObject blood = Instantiate(
+            bloodSprayEffect,
+            hitpoint,
+            Quaternion.LookRotation(hitpoint)
+            );
     }
 
 

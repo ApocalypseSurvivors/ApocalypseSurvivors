@@ -10696,6 +10696,7 @@ MonoBehaviour:
   maxHealth: 100
   bulletForceMultiplier: 80
   healthBar: {fileID: 0}
+  bloodSprayEffect: {fileID: 0}
 --- !u!1 &462491000
 GameObject:
   m_ObjectHideFlags: 0
@@ -16468,6 +16469,7 @@ MonoBehaviour:
   maxHealth: 100
   bulletForceMultiplier: 80
   healthBar: {fileID: 0}
+  bloodSprayEffect: {fileID: 0}
 --- !u!195 &1514331865
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -18207,6 +18209,7 @@ MonoBehaviour:
   maxHealth: 100
   bulletForceMultiplier: 10
   healthBar: {fileID: 0}
+  bloodSprayEffect: {fileID: 0}
 --- !u!114 &2004470764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27807,6 +27810,7 @@ MonoBehaviour:
   maxHealth: 100
   bulletForceMultiplier: 40
   healthBar: {fileID: 0}
+  bloodSprayEffect: {fileID: 0}
 --- !u!1 &8569517087724999002
 GameObject:
   m_ObjectHideFlags: 0
@@ -28238,6 +28242,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1053897631580374094}
   m_LocalEulerAnglesHint: {x: 148.70801, y: 91.902, z: -0.3590088}
+--- !u!1001 &9173392074219635352
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352617089126209369, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924970849391680686, guid: 74199a5a38c06fc41969445b4f46d132,
+        type: 3}
+      propertyPath: m_Name
+      value: BloodSprayFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74199a5a38c06fc41969445b4f46d132, type: 3}
 --- !u!1 &9183664948299479299
 GameObject:
   m_ObjectHideFlags: 0
@@ -28379,3 +28451,4 @@ SceneRoots:
   - {fileID: 1097826963}
   - {fileID: 543450652194355518}
   - {fileID: 9112839334765632889}
+  - {fileID: 9173392074219635352}
