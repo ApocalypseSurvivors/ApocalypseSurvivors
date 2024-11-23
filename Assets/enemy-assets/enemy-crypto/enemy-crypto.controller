@@ -577,7 +577,7 @@ AnimatorStateMachine:
     m_Position: {x: 330, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5524558993351575984}
-    m_Position: {x: 580, y: 210, z: 0}
+    m_Position: {x: 630, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4878195658262310959}
     m_Position: {x: 670, y: 300, z: 0}
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrollingTime: 10
-  detectionAreaRadius: 18
+  detectionAreaRadius: 8
   patrolSpeed: 2
 --- !u!114 &7807204567526564574
 MonoBehaviour:

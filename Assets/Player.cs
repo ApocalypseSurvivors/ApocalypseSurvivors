@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         float time = Time.deltaTime;
         if (actor.Life > 10) {
-            actor.ReceiveDamage(time);
+            //actor.ReceiveDamage(time);
         }
         if (healthBar != null) { healthBar.UpdateHealthBar(actor.Life, maxHealth); 
         } else {
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         {
             
             Debug.Log("Debug Damage");
-            actor.ReceiveDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
+            //actor.ReceiveDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
         }
     }
 }
