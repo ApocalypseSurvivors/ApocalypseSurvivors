@@ -86,14 +86,14 @@ public class Enemy : MonoBehaviour
                     // Debug.Log("Debug null Player ");
                 }
                 // Debug.Log("Debug set Player ");
-                // navAgent.destination = target;
+                navAgent.destination = target;
 
                 // if (navAgent.velocity.magnitude > 0.1f) {
                 //     animator.SetBool("isWalking", true);
                 // } else {
                 //     animator.SetBool("isWalking", false);
                 // }
-            if (rb.IsSleeping())
+            if (rb.velocity.magnitude < 0.1)
             {
                 ReactivateNavMeshAgent();
             } else {
