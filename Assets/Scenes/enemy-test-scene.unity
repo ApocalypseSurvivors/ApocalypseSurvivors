@@ -16504,8 +16504,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 100
   _animator: {fileID: 5866666020395180868}
-  _takeDamageAnimationTriggerVarName: DAMAGE
-  _dieAnimationTriggerVarName: DIE2
+  _takeDamageAnimationTriggerVarName: Damage
+  _dieAnimationTriggerVarName: Die1
   _takeDamageAudioClip: {fileID: 0}
   _dieAudioClip: {fileID: 0}
   _destroyAfterDeadSeconds: 10
@@ -25014,7 +25014,7 @@ Animator:
   m_GameObject: {fileID: 919132148522279812}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3a7b4e2b7f08ff94ba056f09fd3a62b9, type: 3}
-  m_Controller: {fileID: 9100000, guid: 14eba368dcbadfe4a8c8caf141ff69ac, type: 2}
+  m_Controller: {fileID: 9100000, guid: a40792160184d0c47beac6d3d5922f65, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
