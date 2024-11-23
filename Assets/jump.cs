@@ -45,12 +45,9 @@ public class JumpScript : MonoBehaviour
         isGrounded = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay()
     {
         // Check if we landed on the ground
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
+        isGrounded = true;
     }
 }
