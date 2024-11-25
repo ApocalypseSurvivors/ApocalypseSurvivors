@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] float maxHealth = 100;
     [SerializeField] PlayerHealthBar healthBar;
+    public float test_hp;
 
 
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        test_hp = actor.Life;
         float time = Time.deltaTime;
         if (actor.Life > 10) {
             //actor.ReceiveDamage(time);

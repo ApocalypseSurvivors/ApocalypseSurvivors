@@ -7,6 +7,7 @@ public class ZombieAttacjState : StateMachineBehaviour
     UnityEngine.AI.NavMeshAgent agent;
     Transform player;
     [SerializeField] float stopAttackingDistance = 2.5f;
+    Vector3 initialPosition;
 
     private void LookAtPlayer()
     {
@@ -22,11 +23,14 @@ public class ZombieAttacjState : StateMachineBehaviour
     {
        player = GameObject.FindGameObjectWithTag("Player").transform;
        agent = animator.GetComponent<UnityEngine.AI.NavMeshAgent>();
+       initialPosition = agent.transform.position;
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+       agent.transform.position = initialPosition;
        LookAtPlayer();
        float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
        if (distanceFromPlayer > stopAttackingDistance) {
