@@ -31,13 +31,15 @@ public class Enemy : MonoBehaviour
 
         healthBar = GetComponentInChildren<HealthBar>();
         healthBar.UpdateHealthBar(actor.Life, maxHealth); 
-        HideHealthBar();
+        // HideHealthBar();
+        Invoke("HideHealthBar", 1); // Hide health bar after 2 seconds if no new damage is taken
     }
 
    void HideHealthBar()
    {
        healthBar.gameObject.SetActive(false);
    }
+
     void HandleDamage(object sender, UxrDamageEventArgs e) {
         float damage = e.Damage; 
         // Debug.Log("Debug: Damage, actor life " + actor.Life);
