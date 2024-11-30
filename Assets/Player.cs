@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UltimateXR.Mechanics.Weapons;
 
 public class Player : MonoBehaviour
 {
     private UxrActor actor;
     private Rigidbody rb;
+    private PostProcessVolume vol;
+    private Vignette vignette;
     [SerializeField] float maxHealth = 100;
     [SerializeField] PlayerHealthBar healthBar;
     public float test_hp;
@@ -20,6 +23,13 @@ public class Player : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         healthBar = GetComponentInChildren<PlayerHealthBar>();
+        vol = GetComponentInChildren<PostProcessVolume>();
+        vol.profile.TryGetSettings<Vignette>(out vignette);
+        if (!vignette) {
+            Debug.Log("Debug null vignette");
+        } else {
+            vignette.enabled.Override(false);
+        }
         
         if (healthBar != null) {  
             UpdateHealthBar();
@@ -29,13 +39,47 @@ public class Player : MonoBehaviour
  
     }
 
+    private IEnumerator TakeDamageEffect()
+    {
+        float intensity = 0.4f;
+
+        // Enable the vignette and set initial intensity
+        vignette.enabled.Override(true);
+        vignette.intensity.Override(0.4f);
+
+        // Debug.Log("Debug enable vigne");
+        // Wait for the initial delay
+        yield return new WaitForSeconds(0.4f);
+
+        // Gradually reduce the vignette intensity
+        while (intensity > 0)
+        {
+            intensity -= 0.01f;
+
+            // Ensure intensity does not go below zero
+            if (intensity < 0) intensity = 0;
+
+            // Update the vignette intensity
+            vignette.intensity.Override(intensity);
+
+            // Wait for a short delay before the next update
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // Disable the vignette
+        vignette.enabled.Override(false);
+
+        // End the coroutine
+        yield break;
+    }
+
     // Update is called once per frame
     void Update()
     {
         test_hp = actor.Life;
         float time = Time.deltaTime;
         if (actor.Life > 10) {
-            //actor.ReceiveDamage(time);
+            TakeDamage(time / 5);
         }
         if (healthBar != null) { 
             UpdateHealthBar();
@@ -52,21 +96,26 @@ public class Player : MonoBehaviour
     {
         actor.Life -= damageAmount;
         UpdateHealthBar();
+        StartCoroutine(TakeDamageEffect());
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("enemy_hand"))
-        {
-            
-            // Debug.Log("Debug Damage");
-            float damageAmount = other.gameObject.GetComponent<crypto_enemy_hand>().damage * 0.5f;
-            TakeDamage(damageAmount);
+    void PlayerDie() {
 
-            Vector3 knockbackDirection = (transform.position - other.transform.position).normalized;
-            rb.AddForce(knockbackDirection * 1f, ForceMode.Impulse);
-            // actor.ReceiveDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
-        }
     }
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.CompareTag("enemy_hand"))
+    //     {
+    //         
+    //         Debug.Log("Debug attack Damage");
+    //         float damageAmount = other.gameObject.GetComponent<crypto_enemy_hand>().damage * 0.5f;
+    //         TakeDamage(damageAmount);
+    //
+    //         Vector3 knockbackDirection = (transform.position - other.transform.position).normalized;
+    //         rb.AddForce(knockbackDirection * 1f, ForceMode.Impulse);
+    //         // actor.ReceiveDamage(other.gameObject.GetComponent<crypto_enemy_hand>().damage);
+    //     }
+    // }
 }

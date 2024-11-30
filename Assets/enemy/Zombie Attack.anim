@@ -84215,7 +84215,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.53333336
+  - time: 0.83333336
     functionName: applyDamage
     data: 
     objectReferenceParameter: {fileID: 1799990697542046995, guid: 91616459711aae55599a206a12ae4653,
