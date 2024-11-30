@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent navAgent;
     private UxrActor actor;
     private Rigidbody rb;
+    [SerializeField] float attackDamage = 10;
     [SerializeField] float maxHealth = 100;
     [SerializeField] float bulletForceMultiplier = 10;
     [SerializeField] HealthBar healthBar;
@@ -118,7 +119,7 @@ public class Enemy : MonoBehaviour
 
     public void applyDamage() {
         Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
-        player.TakeDamage(10);
+        player.TakeDamage(attackDamage);
         // Debug.Log("Debug apply");
     }
 
