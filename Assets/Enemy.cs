@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
 
     public void applyDamage() {
         Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
-        player.TakeDamage(attackDamage);
+        player.TakeDamage(attackDamage, transform);
         // Debug.Log("Debug apply");
     }
 

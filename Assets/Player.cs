@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
     {
         float time = Time.deltaTime;
         if (actor.Life > 10) {
-            TakeDamage(time / 5);
+            // TakeDamage(time / 5);
         }
         if (healthBar != null) { 
             UpdateHealthBar();
@@ -107,15 +107,19 @@ public class Player : MonoBehaviour
         healthBar.UpdateHealthBar(actor.Life, maxHealth);
     }
 
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(float damageAmount, Transform attacker = null)
     {
         if (!dead()) {
             actor.Life -= damageAmount;
             UpdateHealthBar();
+            StopCoroutine("TakeDamageEffect"); 
             StartCoroutine(TakeDamageEffect());
             if (dead()) {
                 PlayerDie();
             }
+        }
+        if (attacker) {
+            knockBack(attacker);
         }
     }
 
@@ -131,6 +135,11 @@ public class Player : MonoBehaviour
 
     private IEnumerator ShowGameOverUI() {
         yield return new WaitForSeconds(1f);
+    }
+
+    private void knockBack(Transform attacker) {
+            Vector3 knockbackDirection = (transform.position - attacker.position).normalized;
+            rb.AddForce(knockbackDirection * 1f, ForceMode.Impulse);
     }
 
     // private void OnTriggerEnter(Collider other)

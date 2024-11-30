@@ -652,4 +652,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 6
   stopChasingDistance: 21
-  attackingDistance: 2.5
+  attackingDistance: 1.5
