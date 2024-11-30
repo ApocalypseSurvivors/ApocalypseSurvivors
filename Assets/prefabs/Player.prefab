@@ -5523,7 +5523,8 @@ PrefabInstance:
       propertyPath: _rigInfo._rightArmInfo._forearmUniversalLocalAxes._universalToActualAxesRotation.z
       value: 0.70710653
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7102842363186622904, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5128235394028063546, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
@@ -5650,8 +5651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402fb28255f791ed7840ac75c71c9bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vol: {fileID: 0}
   maxHealth: 100
-  healthBar: {fileID: 0}
 --- !u!114 &5720895053280399809
 MonoBehaviour:
   m_ObjectHideFlags: 0

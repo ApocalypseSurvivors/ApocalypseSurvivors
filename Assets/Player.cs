@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 using UltimateXR.Mechanics.Weapons;
 using UltimateXR.Locomotion;
 
@@ -12,10 +14,11 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     public Volume vol;
     private Vignette vignette;
+    public TextMeshProUGUI deathText;
     [SerializeField] float maxHealth = 100;
     private PlayerHealthBar healthBar;
-
-
+    [SerializeField] private AudioClip _takeDamageAudioClip;
+    [SerializeField] private AudioClip _dieAudioClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -112,6 +115,7 @@ public class Player : MonoBehaviour
         if (!dead()) {
             actor.Life -= damageAmount;
             UpdateHealthBar();
+            AudioSource.PlayClipAtPoint(_takeDamageAudioClip, transform.position);
             StopCoroutine("TakeDamageEffect"); 
             StartCoroutine(TakeDamageEffect());
             if (dead()) {
@@ -126,11 +130,13 @@ public class Player : MonoBehaviour
     void PlayerDie() {
         rb.constraints = RigidbodyConstraints.FreezeRotationY;
         UxrSmoothLocomotion motion = GetComponent<UxrSmoothLocomotion>(); 
+        deathText.gameObject.SetActive(true);
         if (!motion) {
             Debug.Log("Debug null motion");
         } else {
             motion.enabled = false;
         }
+        AudioSource.PlayClipAtPoint(_dieAudioClip, transform.position);
     }
 
     private IEnumerator ShowGameOverUI() {
