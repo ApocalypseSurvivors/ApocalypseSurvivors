@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UltimateXR.Mechanics.Weapons;
+using UltimateXR.Locomotion;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
         actor.Life = maxHealth;
 
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         healthBar = GetComponentInChildren<PlayerHealthBar>();
         vol = GetComponentInChildren<PostProcessVolume>();
         vol.profile.TryGetSettings<Vignette>(out vignette);
@@ -94,14 +97,23 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        actor.Life -= damageAmount;
-        UpdateHealthBar();
-        StartCoroutine(TakeDamageEffect());
-
+        if (!actor.IsDead) {
+            actor.Life -= damageAmount;
+            UpdateHealthBar();
+            StartCoroutine(TakeDamageEffect());
+            if (actor.IsDead) {
+                PlayerDie();
+            }
+        }
     }
 
     void PlayerDie() {
+        rb.constraints = RigidbodyConstraints.FreezeRotationY;
+        GetComponent<UxrSmoothLocomotion>().enabled = false;
+    }
 
+    private IEnumerator ShowGameOverUI() {
+        yield return new WaitForSeconds(1f);
     }
 
     // private void OnTriggerEnter(Collider other)

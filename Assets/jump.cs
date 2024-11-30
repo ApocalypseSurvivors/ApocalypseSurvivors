@@ -23,7 +23,6 @@ public class JumpScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
 
         // UxrAvatar.AvatarMoved += UxrAvatarOnGlobalAvatarMoved;
 
