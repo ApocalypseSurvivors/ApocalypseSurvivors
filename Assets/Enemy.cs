@@ -70,12 +70,16 @@ public class Enemy : MonoBehaviour
                 }
                 // Debug.Log("Debug Force: " + (hitpoint - source).normalized * 100);
                 rb.AddForceAtPosition((hitpoint - source).normalized * bulletForceMultiplier, e.RaycastHit.transform.position);
-                if (!actor.IsDead)
+                if (!dead())
                 {
                     CreateBloodSprayEffect(hitpoint);
                 }
             }
         }
+    }
+
+    private bool dead() {
+        return actor.Life <= 0;
     }
 
     void CreateBloodSprayEffect(Vector3 hitpoint)
@@ -91,7 +95,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!actor.IsDead ) {
+        if (!dead() ) {
                 Vector3 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
                 if (target == null) {
                     // Debug.Log("Debug null Player ");

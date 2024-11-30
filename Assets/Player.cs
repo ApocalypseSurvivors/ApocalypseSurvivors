@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UltimateXR.Mechanics.Weapons;
 using UltimateXR.Locomotion;
 
@@ -9,11 +10,10 @@ public class Player : MonoBehaviour
 {
     private UxrActor actor;
     private Rigidbody rb;
-    private PostProcessVolume vol;
+    public Volume vol;
     private Vignette vignette;
     [SerializeField] float maxHealth = 100;
-    [SerializeField] PlayerHealthBar healthBar;
-    public float test_hp;
+    private PlayerHealthBar healthBar;
 
 
     // Start is called before the first frame update
@@ -26,12 +26,20 @@ public class Player : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
         healthBar = GetComponentInChildren<PlayerHealthBar>();
-        vol = GetComponentInChildren<PostProcessVolume>();
-        vol.profile.TryGetSettings<Vignette>(out vignette);
+        // vol = GetComponentInChildren<PostProcessVolume>();
+
+        if (!vol) {
+            Debug.Log("Debug null vol");
+        }
+        VolumeProfile volumeProfile = vol.profile;
+        if (!volumeProfile) {
+            Debug.Log("Debug null profile");
+        }
+        vol.profile.TryGet<Vignette>(out vignette);
         if (!vignette) {
             Debug.Log("Debug null vignette");
         } else {
-            vignette.enabled.Override(false);
+            vignette.active = false;
         }
         
         if (healthBar != null) {  
@@ -39,16 +47,21 @@ public class Player : MonoBehaviour
         } else {
             Debug.Log("Debug null healthBar 1");
         }
+        Debug.Log("Debug player init success");
  
+    }
+
+    private bool dead() {
+        return actor.Life <= 0;
     }
 
     private IEnumerator TakeDamageEffect()
     {
-        float intensity = 0.4f;
+        float intensity = 0.7f;
 
         // Enable the vignette and set initial intensity
-        vignette.enabled.Override(true);
-        vignette.intensity.Override(0.4f);
+        vignette.active = true;
+        vignette.intensity.Override(intensity);
 
         // Debug.Log("Debug enable vigne");
         // Wait for the initial delay
@@ -70,7 +83,7 @@ public class Player : MonoBehaviour
         }
 
         // Disable the vignette
-        vignette.enabled.Override(false);
+        vignette.active = false;
 
         // End the coroutine
         yield break;
@@ -79,7 +92,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        test_hp = actor.Life;
         float time = Time.deltaTime;
         if (actor.Life > 10) {
             TakeDamage(time / 5);
@@ -97,11 +109,11 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        if (!actor.IsDead) {
+        if (!dead()) {
             actor.Life -= damageAmount;
             UpdateHealthBar();
             StartCoroutine(TakeDamageEffect());
-            if (actor.IsDead) {
+            if (dead()) {
                 PlayerDie();
             }
         }
@@ -109,7 +121,12 @@ public class Player : MonoBehaviour
 
     void PlayerDie() {
         rb.constraints = RigidbodyConstraints.FreezeRotationY;
-        GetComponent<UxrSmoothLocomotion>().enabled = false;
+        UxrSmoothLocomotion motion = GetComponent<UxrSmoothLocomotion>(); 
+        if (!motion) {
+            Debug.Log("Debug null motion");
+        } else {
+            motion.enabled = false;
+        }
     }
 
     private IEnumerator ShowGameOverUI() {
