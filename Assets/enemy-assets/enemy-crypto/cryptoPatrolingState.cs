@@ -44,7 +44,7 @@ public class cryptoPatrollingState : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer > patrollingTime)
         {
-            animator.SetBool("isPatrolling", false);
+            animator.SetBool("isPatroling", false);
         }
 
 
