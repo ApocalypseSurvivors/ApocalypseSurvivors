@@ -115,7 +115,14 @@ public class Enemy : MonoBehaviour
         }
         
     }
-  private void ReactivateNavMeshAgent()
+
+    public void applyDamage() {
+        Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
+        player.TakeDamage(10);
+        // Debug.Log("Debug apply");
+    }
+
+    private void ReactivateNavMeshAgent()
     {
         // Debug.Log("Debug ReactivateNavMeshAgent");
         // Re-enable NavMeshAgent and switch back to kinematic Rigidbody
