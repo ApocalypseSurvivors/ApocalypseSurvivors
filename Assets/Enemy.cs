@@ -33,25 +33,33 @@ public class Enemy : MonoBehaviour
         rb.isKinematic = true;   
         actor.DamageReceived += HandleDamage;
 
+
         healthBar = GetComponentInChildren<HealthBar>();
-        healthBar.UpdateHealthBar(actor.Life, maxHealth); 
+        if (!healthBar) {
+            Debug.Log("Debug null healthBar init: " + gameObject.name);
+        } else {
+            // This will throw an exception
+            // healthBar.UpdateHealthBar(actor.Life, maxHealth); 
+        }
         // HideHealthBar();
-        player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
         Invoke("HideHealthBar", 1); // Hide health bar after 2 seconds if no new damage is taken
+
+        player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
+        Debug.Log("Debug enemy init success");
     }
 
    void HideHealthBar()
    {
        if (!healthBar) {
-            Debug.Log("Debug null healthBar hide");
+            Debug.Log("Debug null healthBar hide: "  + gameObject.name);
        } else {
-        healthBar.gameObject.SetActive(false);
+            // Debug.Log("Debug null healthBar hide exist: " + gameObject.name);
+            healthBar.gameObject.SetActive(false);
        }
    }
 
     void HandleDamage(object sender, UxrDamageEventArgs e) {
         float damage = e.Damage; 
-        // Debug.Log("Debug: Damage, actor life " + actor.Life);
         if (healthBar != null) {
             healthBar.gameObject.SetActive(true); // Show health bar
             CancelInvoke(); // Cancel any previous HideHealthBar invocation
