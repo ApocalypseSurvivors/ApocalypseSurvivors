@@ -28,13 +28,15 @@ public class ZombiePatrollingState : StateMachineBehaviour
         }
 
         Vector3 nextPosition = waypointsList[Random.Range(0, waypointsList.Count)].position;
-        agent.SetDestination(nextPosition);
+        if (agent.enabled) {
+            agent.SetDestination(nextPosition);
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance && agent.enabled)
         {
             agent.SetDestination(waypointsList[Random.Range(0, waypointsList.Count)].position);
         }
@@ -56,7 +58,9 @@ public class ZombiePatrollingState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       agent.SetDestination(agent.transform.position);
+       if (agent.enabled) {
+            agent.SetDestination(agent.transform.position);
+       }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -24,7 +24,10 @@ public class ZombieChaseState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       agent.SetDestination(player.position);
+       
+       if (agent.enabled) {
+            agent.SetDestination(player.position);
+       }
        animator.transform.LookAt(player);  
        float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
 
