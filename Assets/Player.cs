@@ -178,6 +178,7 @@ public class Player : MonoBehaviour
     void PlayerDie() {
         rb.constraints = RigidbodyConstraints.FreezeRotationY;
         deathText.gameObject.SetActive(true);
+        StopCoroutine("TakeDamageEffect"); 
         UxrGrabManager.Instance.IsGrabbingAllowed = false;
         Invoke("releaseGrabs", 1);
         Invoke("releaseGrabs", 2);
