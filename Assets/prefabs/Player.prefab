@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 3503558734847729106}
   - component: {fileID: 2734116739220633631}
   m_Layer: 3
-  m_Name: Slot2 (2)
+  m_Name: GunSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,6 +400,7 @@ MonoBehaviour:
   - MagGun
   - MagMachinegun
   - MagShotgun
+  - syringe
   _maxPlaceDistance: 0.18
   _alignTransformUseSelf: 1
   _alignTransform: {fileID: 0}
@@ -465,7 +466,7 @@ GameObject:
   - component: {fileID: 2657738754082817266}
   - component: {fileID: 3414268643540213538}
   m_Layer: 3
-  m_Name: Slot2 (1)
+  m_Name: BeltSlot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -504,6 +505,7 @@ MonoBehaviour:
   - MagGun
   - MagMachinegun
   - MagShotgun
+  - syringe
   _maxPlaceDistance: 0.18
   _alignTransformUseSelf: 1
   _alignTransform: {fileID: 0}
@@ -922,7 +924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1282719463618845844
 Transform:
   m_ObjectHideFlags: 0
@@ -1300,7 +1302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2870778020294061162
 Transform:
   m_ObjectHideFlags: 0
@@ -2188,7 +2190,7 @@ GameObject:
   - component: {fileID: 5845342890721377107}
   - component: {fileID: 3037524730148127557}
   m_Layer: 3
-  m_Name: Slot2
+  m_Name: BeltSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2227,6 +2229,7 @@ MonoBehaviour:
   - MagGun
   - MagMachinegun
   - MagShotgun
+  - syringe
   _maxPlaceDistance: 0.18
   _alignTransformUseSelf: 1
   _alignTransform: {fileID: 0}
@@ -3396,7 +3399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4845754919062834475
 Transform:
   m_ObjectHideFlags: 0
