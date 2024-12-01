@@ -642,7 +642,7 @@ MonoBehaviour:
   _textTarget: {fileID: 2252059685587073817}
   _triggerIndex: 0
   _showCapacity: 1
-  _digits: 3
+  _digits: 2
 --- !u!114 &2251914811362569989
 MonoBehaviour:
   m_ObjectHideFlags: 0

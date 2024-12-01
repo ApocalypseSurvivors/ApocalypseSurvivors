@@ -328,8 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097a8eab230aadf40bdce734556f5482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rounds: 20
-  _capacity: 20
+  _rounds: 10
+  _capacity: 10
 --- !u!114 &3608628111472354408
 MonoBehaviour:
   m_ObjectHideFlags: 0

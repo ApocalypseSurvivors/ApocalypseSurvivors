@@ -5849,7 +5849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7c6f2308c0ad78794d2042036e2251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
+  jumpForce: 2.5
   heightOffset: 0.5
 --- !u!136 &5049290100397896562
 CapsuleCollider:
