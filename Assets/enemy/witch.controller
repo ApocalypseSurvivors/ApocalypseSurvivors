@@ -238,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 6
   stopChasingDistance: 21
-  attackingDistance: 1.5
+  attackingDistance: 1
 --- !u!1102 &-948195611687296535
 AnimatorState:
   serializedVersion: 6

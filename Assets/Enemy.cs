@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent navAgent;
     private UxrActor actor;
     private Rigidbody rb;
+
+    private Player player;
     [SerializeField] float attackDamage = 10;
     [SerializeField] float maxHealth = 100;
     [SerializeField] float bulletForceMultiplier = 10;
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour
         healthBar = GetComponentInChildren<HealthBar>();
         healthBar.UpdateHealthBar(actor.Life, maxHealth); 
         // HideHealthBar();
+        player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
         Invoke("HideHealthBar", 1); // Hide health bar after 2 seconds if no new damage is taken
     }
 
@@ -95,6 +98,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!player) {
+            player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
+        }
         if (!dead() ) {
                 Vector3 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
                 if (target == null) {
@@ -122,9 +128,13 @@ public class Enemy : MonoBehaviour
     }
 
     public void applyDamage() {
-        Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
-        player.TakeDamage(attackDamage, transform);
-        // Debug.Log("Debug apply");
+        float distanceFromPlayer = Vector3.Distance(player.gameObject.transform.position, transform.position);
+        Debug.Log($"Debug Distance {distanceFromPlayer}");
+        float attackingDistance = 1.5f;
+        if (distanceFromPlayer < attackingDistance) {
+            player.TakeDamage(attackDamage, transform);
+            // Debug.Log("Debug apply");
+        }
     }
 
     private void ReactivateNavMeshAgent()

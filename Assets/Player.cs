@@ -7,6 +7,10 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using UltimateXR.Mechanics.Weapons;
 using UltimateXR.Locomotion;
+using UltimateXR.Avatar;
+using UltimateXR.Core;
+using UltimateXR.Devices;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +23,8 @@ public class Player : MonoBehaviour
     private PlayerHealthBar healthBar;
     [SerializeField] private AudioClip _takeDamageAudioClip;
     [SerializeField] private AudioClip _dieAudioClip;
+    [SerializeField] private AudioClip gameOverMusic;
+    public AudioSource gameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,28 +57,32 @@ public class Player : MonoBehaviour
             Debug.Log("Debug null healthBar 1");
         }
         Debug.Log("Debug player init success");
+        deathText.gameObject.SetActive(false);
  
+    }
+    private void restart() {
+        SceneManager.LoadScene( SceneManager.GetActiveScene().name );
     }
 
     private bool dead() {
         return actor.Life <= 0;
     }
 
-    private IEnumerator TakeDamageEffect()
-    {
+    private IEnumerator TakeDamageEffect() {
         float intensity = 0.7f;
 
         // Enable the vignette and set initial intensity
         vignette.active = true;
         vignette.intensity.Override(intensity);
 
-        // Debug.Log("Debug enable vigne");
+        Debug.Log("Debug enable vigne");
         // Wait for the initial delay
         yield return new WaitForSeconds(0.4f);
 
         // Gradually reduce the vignette intensity
         while (intensity > 0)
         {
+            intensity = vignette.intensity.value;  
             intensity -= 0.01f;
 
             // Ensure intensity does not go below zero
@@ -86,7 +96,7 @@ public class Player : MonoBehaviour
         }
 
         // Disable the vignette
-        vignette.active = false;
+        // vignette.active = false;
 
         // End the coroutine
         yield break;
@@ -95,6 +105,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Button2))
+        {
+            restart();
+        }
+
         float time = Time.deltaTime;
         if (actor.Life > 10) {
             // TakeDamage(time / 5);
@@ -127,9 +142,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    void playClipAfterDeath() {
+        gameOver.clip = gameOverMusic;
+        gameOver.loop = true;
+        gameOver.Play();
+    } 
+
     void PlayerDie() {
         rb.constraints = RigidbodyConstraints.FreezeRotationY;
         UxrSmoothLocomotion motion = GetComponent<UxrSmoothLocomotion>(); 
+        // UxrAvatar.LocalAvatarInput.SetIgnoreControllerInput(UxrHandSide.Left, true);
+        // UxrAvatar.LocalAvatarInput.SetIgnoreControllerInput(UxrHandSide.Right, true);
         deathText.gameObject.SetActive(true);
         if (!motion) {
             Debug.Log("Debug null motion");
@@ -137,6 +160,7 @@ public class Player : MonoBehaviour
             motion.enabled = false;
         }
         AudioSource.PlayClipAtPoint(_dieAudioClip, transform.position);
+        Invoke("playClipAfterDeath", 2f);
     }
 
     private IEnumerator ShowGameOverUI() {
