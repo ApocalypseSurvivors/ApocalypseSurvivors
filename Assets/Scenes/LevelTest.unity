@@ -1340,7 +1340,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348329744}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -67.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1348,7 +1348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.6, y: 0}
+  m_AnchoredPosition: {x: -1, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348329746
@@ -1399,8 +1399,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1655,7 +1655,9 @@ MonoBehaviour:
   maxHealth: 100
   bulletForceMultiplier: 80
   healthBar: {fileID: 0}
-  bloodSprayEffect: {fileID: 0}
+  attackAudio: {fileID: 8300000, guid: 834e663f83ad48dda97f82bbb60499eb, type: 3}
+  bloodSprayEffect: {fileID: 220912503297125660, guid: 9b163ec5ede3e11e3a12ddcff761f796,
+    type: 3}
 --- !u!1 &463991356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,7 +3047,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097826963}
   m_LocalRotation: {x: -0, y: -0.9961947, z: -0, w: -0.08715578}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.9}
   m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3054,7 +3056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.86}
+  m_AnchoredPosition: {x: -0.11, y: -0.04}
   m_SizeDelta: {x: 1212, y: 795}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097826965
@@ -5340,6 +5342,7 @@ MonoBehaviour:
   maxHealth: 100
   bulletForceMultiplier: 10
   healthBar: {fileID: 0}
+  attackAudio: {fileID: 0}
   bloodSprayEffect: {fileID: 0}
 --- !u!114 &2004470764
 MonoBehaviour:
@@ -6444,7 +6447,7 @@ PrefabInstance:
     - target: {fileID: 7437639490079995473, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.038
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7437639490079995473, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
         type: 3}
@@ -8661,6 +8664,7 @@ MonoBehaviour:
   maxHealth: 100
   bulletForceMultiplier: 40
   healthBar: {fileID: 0}
+  attackAudio: {fileID: 0}
   bloodSprayEffect: {fileID: 0}
 --- !u!1 &8634756825938081643
 GameObject:

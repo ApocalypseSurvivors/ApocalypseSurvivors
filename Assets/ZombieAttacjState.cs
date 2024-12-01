@@ -6,7 +6,7 @@ public class ZombieAttacjState : StateMachineBehaviour
 {
     UnityEngine.AI.NavMeshAgent agent;
     Transform player;
-    [SerializeField] float stopAttackingDistance = 2.5f;
+    [SerializeField] float stopAttackingDistance = 1.5f;
     Vector3 initialPosition;
 
     private void LookAtPlayer()

@@ -10,6 +10,8 @@ using UltimateXR.Locomotion;
 using UltimateXR.Avatar;
 using UltimateXR.Core;
 using UltimateXR.Devices;
+using UltimateXR.Manipulation;
+
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour
  
     }
     private void restart() {
+        UxrGrabManager.Instance.IsGrabbingAllowed = true;
         SceneManager.LoadScene( SceneManager.GetActiveScene().name );
     }
 
@@ -75,7 +78,7 @@ public class Player : MonoBehaviour
         vignette.active = true;
         vignette.intensity.Override(intensity);
 
-        Debug.Log("Debug enable vigne");
+        // Debug.Log("Debug enable vigne");
         // Wait for the initial delay
         yield return new WaitForSeconds(0.4f);
 
@@ -125,6 +128,30 @@ public class Player : MonoBehaviour
         healthBar.UpdateHealthBar(actor.Life, maxHealth);
     }
 
+    private void playAudio(AudioClip clip) {
+        if (!clip) {
+            Debug.Log("Debug null clip");
+        } else {
+            AudioSource.PlayClipAtPoint(clip, transform.position);
+        }
+    }
+
+    private void releaseGrabs() {
+        // For unknown reason this function has an exception
+        UxrGrabManager manager = UxrGrabManager.Instance;
+
+        IEnumerable<UxrGrabbableObject> grabbedObjects = manager?.CurrentGrabbedObjects;
+        Debug.Log("Debug get grabs ");
+
+        // Release each grabbed object
+        foreach (UxrGrabbableObject obj in grabbedObjects)
+        {
+            Debug.Log("Debug release get grabs ");
+            manager?.ReleaseGrabs(obj, true);
+        }   
+        Debug.Log("Debug release all grabs ");
+    }
+
     public void TakeDamage(float damageAmount, Transform attacker = null)
     {
         if (!dead()) {
@@ -150,10 +177,13 @@ public class Player : MonoBehaviour
 
     void PlayerDie() {
         rb.constraints = RigidbodyConstraints.FreezeRotationY;
+        deathText.gameObject.SetActive(true);
+        UxrGrabManager.Instance.IsGrabbingAllowed = false;
+        Invoke("releaseGrabs", 1);
+        Invoke("releaseGrabs", 2);
         UxrSmoothLocomotion motion = GetComponent<UxrSmoothLocomotion>(); 
         // UxrAvatar.LocalAvatarInput.SetIgnoreControllerInput(UxrHandSide.Left, true);
         // UxrAvatar.LocalAvatarInput.SetIgnoreControllerInput(UxrHandSide.Right, true);
-        deathText.gameObject.SetActive(true);
         if (!motion) {
             Debug.Log("Debug null motion");
         } else {

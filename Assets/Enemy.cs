@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxHealth = 100;
     [SerializeField] float bulletForceMultiplier = 10;
     [SerializeField] HealthBar healthBar;
+    [SerializeField] private AudioClip attackAudio;
     public GameObject bloodSprayEffect;
     private void awake() {
     }
@@ -41,7 +42,11 @@ public class Enemy : MonoBehaviour
 
    void HideHealthBar()
    {
-       healthBar.gameObject.SetActive(false);
+       if (!healthBar) {
+            Debug.Log("Debug null healthBar hide");
+       } else {
+        healthBar.gameObject.SetActive(false);
+       }
    }
 
     void HandleDamage(object sender, UxrDamageEventArgs e) {
@@ -92,6 +97,7 @@ public class Enemy : MonoBehaviour
             hitpoint,
             Quaternion.LookRotation(hitpoint)
             );
+        blood.transform.SetParent(transform);
     }
 
 
@@ -127,9 +133,18 @@ public class Enemy : MonoBehaviour
         
     }
 
+    private void playAudio(AudioClip clip) {
+        if (!clip) {
+            Debug.Log("Debug null clip");
+        } else {
+            AudioSource.PlayClipAtPoint(clip, transform.position);
+        }
+    }
+
     public void applyDamage() {
         float distanceFromPlayer = Vector3.Distance(player.gameObject.transform.position, transform.position);
-        Debug.Log($"Debug Distance {distanceFromPlayer}");
+        playAudio(attackAudio);
+        // Debug.Log($"Debug Distance {distanceFromPlayer}");
         float attackingDistance = 1.5f;
         if (distanceFromPlayer < attackingDistance) {
             player.TakeDamage(attackDamage, transform);
