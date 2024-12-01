@@ -4717,6 +4717,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163371325172464513, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
         type: 3}
+      propertyPath: _parentPrefab
+      value: 
+      objectReference: {fileID: 6800758493993517628, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
+        type: 3}
+    - target: {fileID: 9163371325172464513, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
+        type: 3}
       propertyPath: _rigInfo._leftArmInfo._forearmLength
       value: 0.30653557
       objectReference: {fileID: 0}
