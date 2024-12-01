@@ -4801,36 +4801,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 995035361525075623, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: m_Name
-      value: GunSlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 1260746526605516485, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: m_Name
-      value: BeltSlot2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2188958120839472360, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2509538963523299528, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2734116739220633631, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: _compatibleTags.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2734116739220633631, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: _compatibleTags.Array.data[3]
-      value: syringe
-      objectReference: {fileID: 0}
     - target: {fileID: 2786928301958606348, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4839,36 +4809,6 @@ PrefabInstance:
     - target: {fileID: 2786928301958606348, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3037524730148127557, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: _compatibleTags.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3037524730148127557, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: _compatibleTags.Array.data[3]
-      value: syringe
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414268643540213538, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: _compatibleTags.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414268643540213538, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: _compatibleTags.Array.data[3]
-      value: syringe
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035713241157279281, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: m_Name
-      value: BeltSlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 6964409465172972853, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7437639490079995473, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
