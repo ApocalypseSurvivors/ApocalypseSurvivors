@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
         foreach (UxrGrabbableObject obj in grabbedObjects)
         {
             Debug.Log("Debug release get grabs ");
-            manager?.ReleaseGrabs(obj, true);
+            obj.ReleaseGrabs(true);
         }   
         Debug.Log("Debug release all grabs ");
     }
