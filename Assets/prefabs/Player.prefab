@@ -2799,8 +2799,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 7
+  m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4005,7 +4005,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8055115738614701361}
   m_LocalRotation: {x: -0, y: -0.9961947, z: -0, w: -0.08715578}
-  m_LocalPosition: {x: 0, y: 0, z: 1.9}
+  m_LocalPosition: {x: 0, y: 0, z: 1.177}
   m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4014,7 +4014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.11, y: -0.04}
+  m_AnchoredPosition: {x: 0.018, y: -0.04}
   m_SizeDelta: {x: 1212, y: 795}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2539224062315529111
@@ -4715,12 +4715,6 @@ PrefabInstance:
       propertyPath: _prefabGuid
       value: e99efd5a98f8063dbb3a3ff96c9290d1
       objectReference: {fileID: 0}
-    - target: {fileID: 9163371325172464513, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
-        type: 3}
-      propertyPath: _parentPrefab
-      value: 
-      objectReference: {fileID: 6800758493993517628, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
-        type: 3}
     - target: {fileID: 9163371325172464513, guid: 313a2edf3ee93e8aaa20b1ca2e154eb3,
         type: 3}
       propertyPath: _rigInfo._leftArmInfo._forearmLength
@@ -5922,6 +5916,7 @@ MonoBehaviour:
   vol: {fileID: 0}
   deathText: {fileID: 1269699954801070916}
   maxHealth: 100
+  damageForceMultiplier: 0.1
   _takeDamageAudioClip: {fileID: 8300000, guid: 49a633c1a545a552cb479cbef4841899,
     type: 3}
   _dieAudioClip: {fileID: 8300000, guid: 50bdee33171f9a3e393628dc48a2ded7, type: 3}

@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 6975684541867978568}
   m_Layer: 0
   m_Name: Grenade
-  m_TagString: grenade
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,10 +367,10 @@ MonoBehaviour:
     _grabberProximityIndex: 0
     _enableOnHandNear: {fileID: 8142532513078060780}
   _additionalGrabPoints: []
-  _useParenting: 0
+  _useParenting: 1
   _autoCreateStartAnchor: 0
   _startAnchor: {fileID: 0}
-  _tag: 
+  _tag: grenade
   _dropAlignTransformUseSelf: 1
   _dropAlignTransform: {fileID: 0}
   _dropSnapMode: 3

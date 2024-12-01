@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
     private Player player;
     [SerializeField] float attackDamage = 10;
     [SerializeField] float maxHealth = 100;
-    [SerializeField] float bulletForceMultiplier = 10;
-    [SerializeField] HealthBar healthBar;
+    [SerializeField] float bulletForceMultiplier = 5;
+    private HealthBar healthBar;
     [SerializeField] private AudioClip attackAudio;
     public GameObject bloodSprayEffect;
     private void awake() {
@@ -70,11 +70,11 @@ public class Enemy : MonoBehaviour
         }
         if (e.Dies) {
             int randomValue = Random.Range(0, 2);
-            // if (randomValue == 0) {
-            //     animator.SetTrigger("Die1");
-            // } else {
-            //     animator.SetTrigger("Die2");
-            // }
+            if (randomValue == 0) {
+                animator.SetTrigger("Die1");
+            } else {
+                animator.SetTrigger("Die2");
+            }
         } else {
             navAgent.enabled = false;              // Disable NavMeshAgent
             rb.isKinematic = false;  
@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
                     // Debug.Log("Debug null rb ");
                 }
                 // Debug.Log("Debug Force: " + (hitpoint - source).normalized * 100);
-                rb.AddForceAtPosition((hitpoint - source).normalized * bulletForceMultiplier, e.RaycastHit.transform.position);
+                rb.AddForceAtPosition((hitpoint - source).normalized * bulletForceMultiplier * damage, e.RaycastHit.transform.position);
                 if (!dead())
                 {
                     CreateBloodSprayEffect(hitpoint);

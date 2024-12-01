@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI deathText;
     [SerializeField] float maxHealth = 100;
     private PlayerHealthBar healthBar;
+    [SerializeField] float damageForceMultiplier = 0.1f;
     [SerializeField] private AudioClip _takeDamageAudioClip;
     [SerializeField] private AudioClip _dieAudioClip;
     [SerializeField] private AudioClip gameOverMusic;
@@ -166,7 +167,7 @@ public class Player : MonoBehaviour
             }
         }
         if (attacker) {
-            knockBack(attacker);
+            knockBack(attacker, damageAmount);
         }
     }
 
@@ -199,9 +200,9 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
     }
 
-    private void knockBack(Transform attacker) {
+    private void knockBack(Transform attacker, float damage) {
             Vector3 knockbackDirection = (transform.position - attacker.position).normalized;
-            rb.AddForce(knockbackDirection * 1f, ForceMode.Impulse);
+            rb.AddForce(knockbackDirection * damage * damageForceMultiplier, ForceMode.Impulse);
     }
 
     // private void OnTriggerEnter(Collider other)
