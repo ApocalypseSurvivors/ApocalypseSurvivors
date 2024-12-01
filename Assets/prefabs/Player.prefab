@@ -401,6 +401,7 @@ MonoBehaviour:
   - MagMachinegun
   - MagShotgun
   - syringe
+  - grenade
   _maxPlaceDistance: 0.18
   _alignTransformUseSelf: 1
   _alignTransform: {fileID: 0}
@@ -506,6 +507,7 @@ MonoBehaviour:
   - MagMachinegun
   - MagShotgun
   - syringe
+  - grenade
   _maxPlaceDistance: 0.18
   _alignTransformUseSelf: 1
   _alignTransform: {fileID: 0}
@@ -2230,6 +2232,7 @@ MonoBehaviour:
   - MagMachinegun
   - MagShotgun
   - syringe
+  - grenade
   _maxPlaceDistance: 0.18
   _alignTransformUseSelf: 1
   _alignTransform: {fileID: 0}

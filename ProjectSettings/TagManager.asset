@@ -9,6 +9,7 @@ TagManager:
   - syringe
   - Waypoints
   - enemy_hand
+  - grenade
   layers:
   - Default
   - TransparentFX
