@@ -18,7 +18,11 @@ public class PlayerHealthBar : MonoBehaviour
     }
 
     public void UpdateHealthBar(float currentValue, float maxValue) {
-        slider.value = currentValue / maxValue;
+        if (!slider) {
+            Debug.Log("Debug null slider");
+        } else {
+            slider.value = currentValue / maxValue;
+        }
     }
 
     // Update is called once per frame

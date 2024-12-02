@@ -27,7 +27,33 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip _takeDamageAudioClip;
     [SerializeField] private AudioClip _dieAudioClip;
     [SerializeField] private AudioClip gameOverMusic;
+    [SerializeField] private AudioClip heartBeat;
     public AudioSource gameOver;
+    private Dictionary<string, List<Coroutine>> coroutineDictionary = new Dictionary<string, List<Coroutine>>();
+
+    public Coroutine StartManagedCoroutine(string name, IEnumerator routine)
+    {
+        Coroutine coroutine = StartCoroutine(routine);
+        if (!coroutineDictionary.ContainsKey(name))
+        {
+            coroutineDictionary[name] = new List<Coroutine>();
+        }
+        coroutineDictionary[name].Add(coroutine);
+        return coroutine;
+    }
+
+    public void StopManagedCoroutines(string name)
+    {
+        if (coroutineDictionary.ContainsKey(name))
+        {
+            foreach (Coroutine coroutine in coroutineDictionary[name])
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutineDictionary.Remove(name);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,8 +85,9 @@ public class Player : MonoBehaviour
         } else {
             Debug.Log("Debug null healthBar 1");
         }
-        Debug.Log("Debug player init success");
         deathText.gameObject.SetActive(false);
+        playHeartBeat();
+        Debug.Log("Debug player init success");
  
     }
     private void restart() {
@@ -116,6 +143,9 @@ public class Player : MonoBehaviour
         }
 
         float time = Time.deltaTime;
+
+        updateSourceVolume();
+
         if (actor.Life > 10) {
             // TakeDamage(time / 5);
         }
@@ -160,8 +190,8 @@ public class Player : MonoBehaviour
             actor.Life -= damageAmount;
             UpdateHealthBar();
             AudioSource.PlayClipAtPoint(_takeDamageAudioClip, transform.position);
-            StopCoroutine("TakeDamageEffect"); 
-            StartCoroutine(TakeDamageEffect());
+            StopManagedCoroutines("TakeDamageEffect"); 
+            StartManagedCoroutine("TakeDamageEffect", TakeDamageEffect());
             if (dead()) {
                 PlayerDie();
             }
@@ -172,15 +202,26 @@ public class Player : MonoBehaviour
     }
 
     void playClipAfterDeath() {
+        gameOver.volume = 0.8f;
         gameOver.clip = gameOverMusic;
         gameOver.loop = true;
         gameOver.Play();
     } 
 
+    void playHeartBeat() {
+        updateSourceVolume();
+        gameOver.clip = heartBeat;
+        gameOver.loop = true;
+        gameOver.Play();
+    }
+
     void PlayerDie() {
         rb.constraints = RigidbodyConstraints.FreezeRotationY;
         deathText.gameObject.SetActive(true);
-        StopCoroutine("TakeDamageEffect"); 
+
+        StopManagedCoroutines("TakeDamageEffect"); 
+        vignette.intensity.Override(1f);
+
         UxrGrabManager.Instance.IsGrabbingAllowed = false;
         Invoke("releaseGrabs", 1);
         Invoke("releaseGrabs", 2);
@@ -192,8 +233,13 @@ public class Player : MonoBehaviour
         } else {
             motion.enabled = false;
         }
-        AudioSource.PlayClipAtPoint(_dieAudioClip, transform.position);
+        playAudio(_dieAudioClip);
         Invoke("playClipAfterDeath", 2f);
+    }
+    void updateSourceVolume() {
+        if (!dead()) {
+            gameOver.volume = 1f - actor.Life / maxHealth; 
+        }
     }
 
     private IEnumerator ShowGameOverUI() {

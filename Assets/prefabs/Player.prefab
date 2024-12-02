@@ -5927,6 +5927,7 @@ MonoBehaviour:
     type: 3}
   _dieAudioClip: {fileID: 8300000, guid: 50bdee33171f9a3e393628dc48a2ded7, type: 3}
   gameOverMusic: {fileID: 8300000, guid: 9f40d858a8a305e82801301b5e23ee56, type: 3}
+  heartBeat: {fileID: 8300000, guid: a2d4d618a802c02ccbb9167dab752df5, type: 3}
   gameOver: {fileID: 1173542995927778653}
 --- !u!114 &5720895053280399809
 MonoBehaviour:
