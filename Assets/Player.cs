@@ -205,6 +205,14 @@ public class Player : MonoBehaviour
             rb.AddForce(knockbackDirection * damage * damageForceMultiplier, ForceMode.Impulse);
     }
 
+    public void heal(float heal) {
+        actor.Life += heal;
+        if (actor.Life > maxHealth) {
+            actor.Life = maxHealth;
+        }
+        UpdateHealthBar();
+    }
+
     // private void OnTriggerEnter(Collider other)
     // {
     //     if (other.CompareTag("enemy_hand"))

@@ -611,7 +611,7 @@ MonoBehaviour:
     _projectileSpeed: 80
     _projectileMaxDistance: 300
     _projectileLength: 0.17
-    _projectileDamageNear: 4
+    _projectileDamageNear: 8
     _projectileDamageFar: 4
     _projectileImpactForceMultiplier: 1
     _collisionLayerMask:
