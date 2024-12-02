@@ -237,8 +237,8 @@ MonoBehaviour:
     _projectileSpeed: 80
     _projectileMaxDistance: 300
     _projectileLength: 0.17
-    _projectileDamageNear: 5
-    _projectileDamageFar: 5
+    _projectileDamageNear: 8
+    _projectileDamageFar: 8
     _projectileImpactForceMultiplier: 1
     _collisionLayerMask:
       serializedVersion: 2
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textTarget: {fileID: 1642417817294738183}
   _triggerIndex: 0
-  _showCapacity: 0
+  _showCapacity: 1
   _digits: 2
 --- !u!114 &1642652376503238959
 MonoBehaviour:

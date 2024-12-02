@@ -359,8 +359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textTarget: {fileID: 29798542543188223}
   _triggerIndex: 0
-  _showCapacity: 0
-  _digits: 1
+  _showCapacity: 1
+  _digits: 2
 --- !u!114 &29853965727083113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
     _projectileMaxDistance: 300
     _projectileLength: 0.34
     _projectileDamageNear: 40
-    _projectileDamageFar: 40
+    _projectileDamageFar: 20
     _projectileImpactForceMultiplier: 50
     _collisionLayerMask:
       serializedVersion: 2
