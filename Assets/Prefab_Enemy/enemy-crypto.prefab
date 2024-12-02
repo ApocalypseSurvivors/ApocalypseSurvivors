@@ -2595,9 +2595,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   maxHealth: 100
-  bulletForceMultiplier: 80
+  bulletForceMultiplier: 5
   attackAudio: {fileID: 0}
   bloodSprayEffect: {fileID: 0}
+  isDead: 0
 --- !u!114 &6622053036641866474
 MonoBehaviour:
   m_ObjectHideFlags: 0

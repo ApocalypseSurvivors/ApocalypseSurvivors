@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private HealthBar healthBar;
     [SerializeField] private AudioClip attackAudio;
     public GameObject bloodSprayEffect;
+    public bool isDead = false;
     private void awake() {
     }
 
@@ -112,6 +113,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (actor.Life <= 0)
+        {
+            isDead = true;
+        }
+        else
+        {
+            isDead = false;
+        }
         if (!player) {
             player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
         }

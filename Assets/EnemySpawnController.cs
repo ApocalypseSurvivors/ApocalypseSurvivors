@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawnController : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class EnemySpawnController : MonoBehaviour
     public List<Enemy> currentEnemyAlive;
 
     public GameObject enemyPrefab;
+
+    public TextMeshProUGUI WaveOverUI;
+    public TextMeshProUGUI cooldownCounterUI;
+    public TextMeshProUGUI currentWaveUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +34,56 @@ public class EnemySpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        List<Enemy> enemyToRemove = new List<Enemy>();
+        foreach (Enemy enemy in currentEnemyAlive)
+        {
+            if (enemy.isDead)
+            {
+                enemyToRemove.Add(enemy);
+            }
+        }
+        foreach (Enemy enemy in currentEnemyAlive)
+        {
+            if (enemy.isDead)
+            {
+                currentEnemyAlive.Remove(enemy);
+            }
+        }
+        enemyToRemove.Clear();
+        if (currentEnemyAlive.Count ==0 && inCooldown == false)
+        {
+            StartCoroutine(WaveCooldown());
+        }
+        if (inCooldown)
+        {
+            cooldownCounter -= Time.deltaTime;
+        }
+        else
+        {
+            cooldownCounter = waveCooldown;
+        }
+
+        cooldownCounterUI.text = cooldownCounter.ToString("F0");
     }
 
+    private IEnumerator WaveCooldown()
+    {
+        inCooldown = true;
+        WaveOverUI.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(waveCooldown);
+
+        inCooldown = false;
+
+        WaveOverUI.gameObject.SetActive(false);
+        //currentEnemyPerWave += 1;
+        StartNextWave();
+    }
     private void StartNextWave()
     {
         currentEnemyAlive.Clear();
         currentWave++;
+        currentWaveUI.text = "Wave: " + currentWave.ToString();
         StartCoroutine(SpawnWave());
     }
 
