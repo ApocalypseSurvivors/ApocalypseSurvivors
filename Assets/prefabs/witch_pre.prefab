@@ -2606,6 +2606,8 @@ MonoBehaviour:
   - {fileID: 2469819177281156579, guid: 4b400d3160fb5de469c36589be9d5fe5, type: 3}
   syringePrefab: {fileID: 4571473417489510893, guid: cbb2b7ae8adb12deab7c3ef0db56e326,
     type: 3}
+  dropProb: 1
+  dropAmmoProb: 0.6
 --- !u!1 &7530589956614222052
 GameObject:
   m_ObjectHideFlags: 0
