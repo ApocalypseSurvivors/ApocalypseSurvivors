@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
     public AudioSource gameOver;
     private Dictionary<string, List<Coroutine>> coroutineDictionary = new Dictionary<string, List<Coroutine>>();
 
+    public int damageAmount = 10; // Damage to apply
+    public float damageInterval = 15f; // Interval in seconds
+
     public Coroutine StartManagedCoroutine(string name, IEnumerator routine)
     {
         Coroutine coroutine = StartCoroutine(routine);
@@ -87,6 +90,7 @@ public class Player : MonoBehaviour
         }
         deathText.gameObject.SetActive(false);
         playHeartBeat();
+        // StartCoroutine(ApplyDamageOverTime());
         Debug.Log("Debug player init success");
  
     }
@@ -266,6 +270,16 @@ public class Player : MonoBehaviour
         UpdateHealthBar();
     }
 
+   private IEnumerator ApplyDamageOverTime()
+   {
+       while (true) // Continuous loop
+       {
+           // Wait for the specified interval
+           yield return new WaitForSeconds(damageInterval);
+           TakeDamage(damageAmount); 
+           // Apply damage
+       }
+   }
     // private void OnTriggerEnter(Collider other)
     // {
     //     if (other.CompareTag("enemy_hand"))
