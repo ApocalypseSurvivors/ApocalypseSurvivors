@@ -207,9 +207,9 @@ MonoBehaviour:
     _ammunitionMagAnchor: {fileID: 39524181420492751}
     _recoilAngleOneHand: 2
     _recoilAngleTwoHands: 0
-    _recoilOffsetOneHand: {x: -0, y: -0, z: -0.01}
+    _recoilOffsetOneHand: {x: -0, y: 0.05, z: -0.1}
     _recoilOffsetTwoHands: {x: -0, y: -0, z: -0.03}
-    _recoilDurationSeconds: 0.2
+    _recoilDurationSeconds: 0.4
 --- !u!114 &1641663754671870577
 MonoBehaviour:
   m_ObjectHideFlags: 0

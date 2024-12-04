@@ -314,8 +314,8 @@ MonoBehaviour:
   _rotationResistance: 0
   _rigidBodySource: {fileID: 6975684541867978568}
   _rigidBodyDynamicOnRelease: 1
-  _verticalReleaseMultiplier: 2
-  _horizontalReleaseMultiplier: 2
+  _verticalReleaseMultiplier: 8
+  _horizontalReleaseMultiplier: 6
   _previewGrabPosesMode: 3
   _previewPosesRegenerationType: 0
   _previewPosesRegenerationIndex: -1

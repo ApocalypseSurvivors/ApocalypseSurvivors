@@ -2561,7 +2561,7 @@ MonoBehaviour:
   _life: 100
   _animator: {fileID: 4794812310297691170}
   _takeDamageAnimationTriggerVarName: Damage
-  _dieAnimationTriggerVarName: Die2
+  _dieAnimationTriggerVarName: 
   _takeDamageAudioClip: {fileID: 8300000, guid: 2e2906eeb982335ecafa34e4507a5bc8,
     type: 3}
   _dieAudioClip: {fileID: 8300000, guid: ceacb744f5b406e58815715b078b7521, type: 3}
@@ -2582,11 +2582,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   maxHealth: 100
-  bulletForceMultiplier: 80
-  healthBar: {fileID: 0}
+  bulletForceMultiplier: 5
   attackAudio: {fileID: 8300000, guid: 834e663f83ad48dda97f82bbb60499eb, type: 3}
   bloodSprayEffect: {fileID: 220912503297125660, guid: 9b163ec5ede3e11e3a12ddcff761f796,
     type: 3}
+  isDead: 0
 --- !u!1 &7530589956614222052
 GameObject:
   m_ObjectHideFlags: 0

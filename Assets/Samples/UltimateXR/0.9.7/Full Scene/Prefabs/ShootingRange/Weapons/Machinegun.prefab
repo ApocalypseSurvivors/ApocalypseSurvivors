@@ -558,7 +558,7 @@ MonoBehaviour:
   _triggers:
   - _projectileShotIndex: 0
     _cycleType: 2
-    _maxShotFrequency: 10
+    _maxShotFrequency: 8
     _shotAudio:
       _clip: {fileID: 8300000, guid: b911de1144c2fe54eb90315943b52d40, type: 3}
       _volume: 1
@@ -580,10 +580,10 @@ MonoBehaviour:
     _triggerRotationDegrees: 40
     _ammunitionMagAnchor: {fileID: 6047250364362683561}
     _recoilAngleOneHand: 4
-    _recoilAngleTwoHands: 0.3
-    _recoilOffsetOneHand: {x: -0, y: -0, z: -0.03}
-    _recoilOffsetTwoHands: {x: -0, y: -0, z: -0.01}
-    _recoilDurationSeconds: 0.2
+    _recoilAngleTwoHands: 2
+    _recoilOffsetOneHand: {x: 0, y: 0.1, z: -0.2}
+    _recoilOffsetTwoHands: {x: 0, y: 0, z: -0.1}
+    _recoilDurationSeconds: 0.4
 --- !u!114 &2252369392840551947
 MonoBehaviour:
   m_ObjectHideFlags: 0
