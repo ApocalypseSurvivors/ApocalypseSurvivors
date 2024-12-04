@@ -48,7 +48,7 @@ public class ItemDropper : MonoBehaviour
 
     private Vector3 getSpawnlocation() {
         float offset = 0.1f;
-        Vector3 spawnOffset = new Vector3(Random.Range(-offset, offset), 0f, Random.Range(-offset, offset));
+        Vector3 spawnOffset = new Vector3(Random.Range(-offset, offset), 1.5f, Random.Range(-offset, offset));
         Vector3 spawnPosition = transform.position + spawnOffset;
         return spawnPosition;
     }
@@ -56,7 +56,7 @@ public class ItemDropper : MonoBehaviour
     private void dropSyringe() {
 
         Vector3 spawnPosition = getSpawnlocation();
-        var enemy = Instantiate(syringePrefab, spawnPosition, Quaternion.identity);
+        Instantiate(syringePrefab, spawnPosition, Quaternion.identity);
     }
 
     // Update is called once per frame
