@@ -59,6 +59,15 @@ public class Enemy : MonoBehaviour
        }
    }
 
+   private void drop() {
+        ItemDropper dropper = GetComponent<ItemDropper>();
+        if (!dropper) {
+            Debug.Log("Debug null dropper");
+        } else {
+            dropper.drop();
+        }
+   }
+
     void HandleDamage(object sender, UxrDamageEventArgs e) {
         float damage = e.Damage; 
         if (healthBar != null) {
@@ -70,6 +79,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Debug null healthBar");
         }
         if (e.Dies) {
+            drop();
             int randomValue = Random.Range(0, 2);
             if (randomValue == 0) {
                 animator.SetTrigger("Die1");
