@@ -2421,6 +2421,7 @@ GameObject:
   - component: {fileID: 8328742272944887732}
   - component: {fileID: 1891392442823105927}
   - component: {fileID: 218607888873538581}
+  - component: {fileID: -6235337186752751946}
   m_Layer: 0
   m_Name: witch_pre
   m_TagString: Untagged
@@ -2587,6 +2588,24 @@ MonoBehaviour:
   bloodSprayEffect: {fileID: 220912503297125660, guid: 9b163ec5ede3e11e3a12ddcff761f796,
     type: 3}
   isDead: 0
+--- !u!114 &-6235337186752751946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423016785604365706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf30bdd7c6332978943c12f37d145c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammos:
+  - {fileID: 142325198076723701, guid: d0a5e2e7972347e42a3c7ae966edf222, type: 3}
+  - {fileID: 6341843466046384214, guid: 6112527c66de1c34c9738c780e843457, type: 3}
+  - {fileID: 2469819177281156579, guid: 4b400d3160fb5de469c36589be9d5fe5, type: 3}
+  syringePrefab: {fileID: 4571473417489510893, guid: cbb2b7ae8adb12deab7c3ef0db56e326,
+    type: 3}
 --- !u!1 &7530589956614222052
 GameObject:
   m_ObjectHideFlags: 0
