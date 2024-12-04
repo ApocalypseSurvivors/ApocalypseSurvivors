@@ -100,7 +100,9 @@ public class Player : MonoBehaviour
     }
 
     private IEnumerator TakeDamageEffect() {
-        float intensity = 0.7f;
+        float lifeRatio = healthRatio();
+        float lostLifeRatio = 1f - lifeRatio;
+        float intensity = lostLifeRatio > 0.7f? lostLifeRatio: 0.7f;
 
         // Enable the vignette and set initial intensity
         vignette.active = true;
@@ -111,7 +113,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
 
         // Gradually reduce the vignette intensity
-        while (intensity > 0)
+        while (intensity > lostLifeRatio / 2f)
         {
             intensity = vignette.intensity.value;  
             intensity -= 0.01f;
@@ -236,9 +238,14 @@ public class Player : MonoBehaviour
         playAudio(_dieAudioClip);
         Invoke("playClipAfterDeath", 2f);
     }
+
+    public float healthRatio() {
+        return actor.Life / maxHealth;
+    }
+
     void updateSourceVolume() {
         if (!dead()) {
-            gameOver.volume = 1f - actor.Life / maxHealth; 
+            gameOver.volume = 1f - healthRatio(); 
         }
     }
 
