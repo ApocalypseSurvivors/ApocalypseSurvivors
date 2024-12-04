@@ -1547,7 +1547,7 @@ MonoBehaviour:
       _clip: {fileID: 8300000, guid: 0ad2edf9942de150bab605f105087f47, type: 3}
       _volume: 0.5
     _shotAudioNoAmmo:
-      _clip: {fileID: 8300000, guid: fe726d3155153a34b8f4aca59c732479, type: 3}
+      _clip: {fileID: 8300000, guid: cb239d9d985c4670985f5e968cfb320f, type: 3}
       _volume: 0.3
     _shotHapticClip:
       _clip: {fileID: 0}
