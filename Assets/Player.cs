@@ -18,21 +18,35 @@ public class Player : MonoBehaviour
 {
     private UxrActor actor;
     private Rigidbody rb;
+
+    [Header("Damage effect")]
     public Volume vol;
     private Vignette vignette;
-    public TextMeshProUGUI deathText;
+
+    [Header("Health")]
     [SerializeField] float maxHealth = 100;
     private PlayerHealthBar healthBar;
+
     [SerializeField] float damageForceMultiplier = 0.1f;
     [SerializeField] private AudioClip _takeDamageAudioClip;
     [SerializeField] private AudioClip _dieAudioClip;
     [SerializeField] private AudioClip gameOverMusic;
     [SerializeField] private AudioClip heartBeat;
+    public TextMeshProUGUI deathText;
+
     public AudioSource gameOver;
     private Dictionary<string, List<Coroutine>> coroutineDictionary = new Dictionary<string, List<Coroutine>>();
 
+    // [SerializeField] private AudioClip heartBeat;
+    [Header("Auto Damage")]
     public int autoDamageAmount = 10; // Damage to apply
     public float autoDamageInterval = 40f; // Interval in seconds
+
+    [Header("Footstep")]
+    public AudioSource foot;
+    public AudioClip[] footsteps;
+    private bool isGrounded = false;          // Checks if the player is on the ground
+    private Vector3 lastPos;
 
     public Coroutine StartManagedCoroutine(string name, IEnumerator routine)
     {
@@ -91,6 +105,8 @@ public class Player : MonoBehaviour
         deathText.gameObject.SetActive(false);
         playHeartBeat();
         StartCoroutine(ApplyDamageOverTime());
+        foot.enabled = false;
+        lastPos = transform.position;
         Debug.Log("Debug player init success");
  
     }
@@ -101,6 +117,41 @@ public class Player : MonoBehaviour
 
     private bool dead() {
         return actor.Life <= 0;
+    }
+
+    private void OnCollisionStay()
+    {
+        // Check if we landed on the ground
+        isGrounded = true;
+    }
+
+    private void OnCollisionExit()
+    {
+        // Check if we landed on the ground
+        isGrounded = false;
+    }
+
+    private bool grounded() {
+        if (isGrounded) {
+            // isGrounded = false;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    void PlayFootstep()
+    {
+        if (footsteps.Length > 0 && !foot.enabled)
+        {
+            // Debug.Log("Debug foot 1");
+            // Select a random footstep sound from the array
+            int index = Random.Range(0, footsteps.Length);
+            foot.clip = footsteps[index];
+            foot.loop = true;
+            foot.enabled = true;
+            foot.Play();
+        }
     }
 
     private IEnumerator TakeDamageEffect() {
@@ -139,6 +190,13 @@ public class Player : MonoBehaviour
         yield break;
     }
 
+    // Because of the UXR smooth motion I cannot use rb.velocity 
+    private float speedCal() {
+        float speed = ((transform.position - lastPos) / Time.deltaTime).magnitude;
+        lastPos = transform.position;
+        return speed;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -152,9 +210,14 @@ public class Player : MonoBehaviour
 
         updateSourceVolume();
 
-        if (actor.Life > 10) {
-            // TakeDamage(time / 5);
+        bool g = grounded();
+        if (speedCal() > 0.1f && g) {
+            // Debug.Log("Debug foot");
+            PlayFootstep();
+        } else {
+            foot.enabled = false;
         }
+
         if (healthBar != null) { 
             UpdateHealthBar();
         } else {
