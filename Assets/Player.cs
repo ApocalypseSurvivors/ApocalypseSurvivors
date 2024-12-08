@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip gameOverMusic;
     [SerializeField] private AudioClip heartBeat;
     public TextMeshProUGUI deathText;
+    public TextMeshProUGUI deathTimer;
 
     public AudioSource gameOver;
     private Dictionary<string, List<Coroutine>> coroutineDictionary = new Dictionary<string, List<Coroutine>>();
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
             Debug.Log("Debug null healthBar 1");
         }
         deathText.gameObject.SetActive(false);
+        deathTimer.gameObject.SetActive(false);
         playHeartBeat();
         StartCoroutine(ApplyDamageOverTime());
         foot.enabled = false;
@@ -284,9 +286,23 @@ public class Player : MonoBehaviour
         gameOver.Play();
     }
 
+    // Method to format time in seconds to "HH:MM:SS"
+    public string FormatTime(float totalSeconds)
+    {
+        // Calculate hours, minutes, and seconds
+        int hours = Mathf.FloorToInt(totalSeconds / 3600);
+        int minutes = Mathf.FloorToInt((totalSeconds % 3600) / 60);
+        int seconds = Mathf.FloorToInt(totalSeconds % 60);
+        // Format as "HH:MM:SS"
+        string formattedTime = string.Format("💀 {0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+        return formattedTime;
+    }
+
     void PlayerDie() {
         rb.constraints = RigidbodyConstraints.FreezeRotationY;
         deathText.gameObject.SetActive(true);
+        deathTimer.gameObject.SetActive(true);
+        deathTimer.text = FormatTime(Time.timeSinceLevelLoad);
 
         StopManagedCoroutines("TakeDamageEffect"); 
         vignette.intensity.Override(1f);
