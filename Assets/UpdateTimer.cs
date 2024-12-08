@@ -26,7 +26,7 @@ public class UpdateTimer : MonoBehaviour
         int minutes = Mathf.FloorToInt((totalSeconds % 3600) / 60);
         int seconds = Mathf.FloorToInt(totalSeconds % 60);
         // Format as "HH:MM:SS"
-        string formattedTime = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+        string formattedTime = string.Format("⏱️ {0:00}:{1:00}:{2:00}", hours, minutes, seconds);
         return formattedTime;
     }
 }
