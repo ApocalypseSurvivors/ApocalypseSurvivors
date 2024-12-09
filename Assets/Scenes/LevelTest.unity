@@ -1870,6 +1870,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2987762542248386242, guid: c563684d5177f9347aa42336107d430f,
         type: 3}
+    - target: {fileID: 298454411936682438, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 298454411936682438, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 298454411936682438, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3554158566019150135, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4023344743599032257, guid: b16c00eabfa04e060aecb09a1dcd5528,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1963,7 +1983,7 @@ PrefabInstance:
     - target: {fileID: 6584740310258222378, guid: b16c00eabfa04e060aecb09a1dcd5528,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00000047683716
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 6584740310258222378, guid: b16c00eabfa04e060aecb09a1dcd5528,
         type: 3}
@@ -3001,7 +3021,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_UseGeometry: 0
   m_DefaultArea: 0
-  m_GenerateLinks: 0
+  m_GenerateLinks: 1
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
