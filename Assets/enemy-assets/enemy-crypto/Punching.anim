@@ -5516,7 +5516,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.53333336
-        value: 0.02121111
+        value: 0.07316998
         inSlope: 2.2745442
         outSlope: 2.2745442
         tangentMode: 0
@@ -21677,7 +21677,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.53333336
-        value: 0.02121111
+        value: 0.07316998
         inSlope: 2.2745442
         outSlope: 2.2745442
         tangentMode: 0
@@ -31146,7 +31146,8 @@ AnimationClip:
   - time: 0.53333336
     functionName: applyDamage
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 9100000, guid: a40792160184d0c47beac6d3d5922f65,
+      type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
