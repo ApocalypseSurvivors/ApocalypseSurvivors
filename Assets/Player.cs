@@ -49,6 +49,9 @@ public class Player : MonoBehaviour
     private bool isGrounded = false;          // Checks if the player is on the ground
     private Vector3 lastPos;
 
+
+    public Transform[] spawnLocations;
+
     public Coroutine StartManagedCoroutine(string name, IEnumerator routine)
     {
         Coroutine coroutine = StartCoroutine(routine);
@@ -69,6 +72,16 @@ public class Player : MonoBehaviour
                 StopCoroutine(coroutine);
             }
             coroutineDictionary.Remove(name);
+        }
+    }
+
+    private void spawnRandomLoc() {
+        int len = spawnLocations.Length; 
+        if (len > 0) {
+           int randomIndex = Random.Range(0, len); 
+           Vector3 spawnPosition = spawnLocations[randomIndex].position;
+           transform.position = spawnPosition;
+           transform.rotation = spawnLocations[randomIndex].rotation;
         }
     }
 
@@ -108,6 +121,8 @@ public class Player : MonoBehaviour
         playHeartBeat();
         StartCoroutine(ApplyDamageOverTime());
         foot.enabled = false;
+
+        spawnRandomLoc();
         lastPos = transform.position;
         Debug.Log("Debug player init success");
  
