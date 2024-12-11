@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/enemy-test-scene.unity
     guid: 9c2215ec6e6cc984fb6ec310a6b6d040
+  - enabled: 0
+    path: Assets/Samples/UltimateXR/0.9.7/Full Scene/UltimateXR_URP.unity
+    guid: d026aa0551d251248a15d6e236c7803d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ccc254513c83fa361a9968a261d5eb28,
       type: 2}
