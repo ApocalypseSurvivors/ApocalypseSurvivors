@@ -217,7 +217,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Time.timeScale = Application.isFocused? 1: 0;
+        // Time.timeScale = Application.isFocused? 1: 0;
         if (UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Button2))
         {
             restart();

@@ -33,6 +33,7 @@ public class ZombieChaseState : StateMachineBehaviour
 
        if (distanceFromPlayer > stopChasingDistance) {
            animator.SetBool("isChasing", false);
+            agent.isStopped = true;
        }
        if (distanceFromPlayer < attackingDistance) {
            animator.SetBool("isAttacking", true);

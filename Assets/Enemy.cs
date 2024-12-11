@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.AI.Navigation;
 using UltimateXR.Mechanics.Weapons;
 
 public class Enemy : MonoBehaviour
@@ -19,6 +20,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioClip attackAudio;
     public GameObject bloodSprayEffect;
     public bool isDead = false;
+    [SerializeField]
+    private float _jumpDuration = 0.8f;
+    private bool _onNavMeshLink = false;
     private void awake() {
     }
 
@@ -34,6 +38,7 @@ public class Enemy : MonoBehaviour
         rb.isKinematic = true;   
         actor.DamageReceived += HandleDamage;
 
+        navAgent.autoTraverseOffMeshLink = false;
 
         healthBar = GetComponentInChildren<HealthBar>();
         if (!healthBar) {
@@ -49,6 +54,77 @@ public class Enemy : MonoBehaviour
         Debug.Log("Debug enemy init success");
     }
 
+  private void StartNavMeshLinkMovement()
+    {
+        _onNavMeshLink = true;
+        NavMeshLink link = (NavMeshLink)navAgent.navMeshOwner;
+        Spline spline = link.GetComponentInChildren<Spline>();
+
+        PerformJump(link, spline);
+    }
+
+    private void PerformJump(NavMeshLink link, Spline spline)
+    {
+        bool reverseDirection = CheckIfJumpingFromEndToStart(link);
+        StartCoroutine(MoveOnOffMeshLink(spline, reverseDirection));
+
+        // OnStartJump?.Invoke();
+    }
+
+    private bool CheckIfJumpingFromEndToStart(NavMeshLink link)
+    {
+        Vector3 startPosWorld
+            = link.gameObject.transform.TransformPoint(link.startPoint);
+        Vector3 endPosWorld
+            = link.gameObject.transform.TransformPoint(link.endPoint);
+
+        float distancePlayerToStart 
+            = Vector3.Distance(navAgent.transform.position, startPosWorld);
+        float distancePlayerToEnd 
+            = Vector3.Distance(navAgent.transform.position, endPosWorld);
+
+
+        return distancePlayerToStart > distancePlayerToEnd;
+    }
+
+    private IEnumerator MoveOnOffMeshLink(Spline spline, bool reverseDirection)
+    {
+        float currentTime = 0;
+        Vector3 agentStartPosition = navAgent.transform.position;
+
+        while (currentTime < _jumpDuration)
+        {
+            currentTime += Time.deltaTime;
+
+            float amount = Mathf.Clamp01(currentTime / _jumpDuration);
+            amount = reverseDirection ? 1 - amount : amount;
+            // Debug.Log($"Debug amount {amount}");
+
+            navAgent.transform.position =
+                reverseDirection ?
+                spline.CalculatePositionCustomEnd(amount, agentStartPosition)
+                : spline.CalculatePositionCustomStart(amount, agentStartPosition);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        navAgent.CompleteOffMeshLink();
+
+        // OnLand?.Invoke();
+        yield return new WaitForSeconds(0.1f);
+        _onNavMeshLink = false;
+
+    }
+
+
+    void FaceTarget(Vector3 target)
+    {
+        Vector3 direction = (target - transform.position).normalized;
+        Quaternion lookRotation 
+            = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation 
+            = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+    }
    void HideHealthBar()
    {
        if (!healthBar) {
@@ -135,12 +211,14 @@ public class Enemy : MonoBehaviour
             player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
         }
         if (!dead() ) {
-                Vector3 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
-                if (target == null) {
-                    // Debug.Log("Debug null Player ");
-                }
-                // Debug.Log("Debug set Player ");
-                navAgent.destination = target;
+                 if (navAgent.isOnOffMeshLink && _onNavMeshLink == false)
+                    {
+                        StartNavMeshLinkMovement();
+                    }
+                    if (_onNavMeshLink)
+                    {
+                        FaceTarget(navAgent.currentOffMeshLinkData.endPos);
+                    }
 
                 // if (navAgent.velocity.magnitude > 0.1f) {
                 //     animator.SetBool("isWalking", true);
@@ -158,6 +236,18 @@ public class Enemy : MonoBehaviour
             navAgent.enabled = false;
         }
         
+    }
+
+    private void setTarget() {
+
+            if (_onNavMeshLink)
+                return;
+            Vector3 target = player.gameObject.transform.position;
+            if (target == null) {
+                // Debug.Log("Debug null Player ");
+            }
+            // Debug.Log("Debug set Player ");
+            navAgent.destination = target;
     }
 
     private void playAudio(AudioClip clip) {
