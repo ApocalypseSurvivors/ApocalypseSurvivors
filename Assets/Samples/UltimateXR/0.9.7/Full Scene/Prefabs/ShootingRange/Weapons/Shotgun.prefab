@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 29085328925954327}
   - component: {fileID: 29862533461484955}
   - component: {fileID: 4088581767290762260}
+  - component: {fileID: 8285817989317013652}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -189,8 +190,7 @@ MonoBehaviour:
   _previewGrabPosesMode: 1
   _previewPosesRegenerationType: 0
   _previewPosesRegenerationIndex: -1
-  _selectedAvatarForGrips: {fileID: 6800616272644675311, guid: af480974a3e0c9a438abc245d0558ac5,
-    type: 3}
+  _selectedAvatarForGrips: {fileID: 0}
   _firstGrabPointIsMain: 1
   _grabPoint:
     _editorFoldout: 1
@@ -490,6 +490,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8285817989317013652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142960080207654231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ba1b29fd27bd56dba80f54c08a47c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
 --- !u!1 &143163813846202381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,6 +2034,12 @@ PrefabInstance:
       propertyPath: _startAnchor
       value: 
       objectReference: {fileID: 57790843108057533}
+    - target: {fileID: 749211789464610980, guid: 4b400d3160fb5de469c36589be9d5fe5,
+        type: 3}
+      propertyPath: _selectedAvatarForGrips
+      value: 
+      objectReference: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b,
+        type: 3}
     - target: {fileID: 759207059584234427, guid: 4b400d3160fb5de469c36589be9d5fe5,
         type: 3}
       propertyPath: m_RootOrder

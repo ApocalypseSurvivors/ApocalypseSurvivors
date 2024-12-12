@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 4379950197833096784}
   - component: {fileID: 2815214356701780562}
   - component: {fileID: 5210702534537492957}
+  - component: {fileID: -37134139420297915}
   m_Layer: 0
   m_Name: MagMachinegun
   m_TagString: Untagged
@@ -363,8 +364,7 @@ MonoBehaviour:
   _previewGrabPosesMode: 1
   _previewPosesRegenerationType: 0
   _previewPosesRegenerationIndex: -1
-  _selectedAvatarForGrips: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b,
-    type: 3}
+  _selectedAvatarForGrips: {fileID: 0}
   _firstGrabPointIsMain: 1
   _grabPoint:
     _editorFoldout: 1
@@ -553,6 +553,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _setValueOnStart: 1
   _renderer: {fileID: 4420090112444772206}
+--- !u!114 &-37134139420297915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341843466046384214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ba1b29fd27bd56dba80f54c08a47c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
 --- !u!1 &6777017876367817015
 GameObject:
   m_ObjectHideFlags: 0
