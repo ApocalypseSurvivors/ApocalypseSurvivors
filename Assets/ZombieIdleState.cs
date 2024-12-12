@@ -20,11 +20,11 @@ public class ZombieIdleState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        timer += Time.deltaTime;
-       if (timer > idleTime) {
+       float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
+       if (timer > idleTime && distanceFromPlayer > detectionAreaRadius) {
            animator.SetBool("isPatroling", true);
        }
-       float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
-       if (distanceFromPlayer < detectionAreaRadius) {
+       if (distanceFromPlayer <= detectionAreaRadius) {
            if (!animator.GetBool("isChasing")) {
                 animator.GetComponent<Enemy>().playAlertSound();
                 animator.SetBool("isChasing", true);
