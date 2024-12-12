@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 2163656224132607425}
   - component: {fileID: 6047853625201259871}
   - component: {fileID: 8056117660610838217}
+  - component: {fileID: 2862923331480021650}
   m_Layer: 0
   m_Name: GrabCube
   m_TagString: Untagged
@@ -359,8 +360,7 @@ MonoBehaviour:
   _previewGrabPosesMode: 3
   _previewPosesRegenerationType: 0
   _previewPosesRegenerationIndex: -1
-  _selectedAvatarForGrips: {fileID: 7332821381003925059, guid: fd896d3a0df2ac62ba93eefcdbdbecc1,
-    type: 3}
+  _selectedAvatarForGrips: {fileID: 0}
   _firstGrabPointIsMain: 1
   _grabPoint:
     _editorFoldout: 1
@@ -406,3 +406,16 @@ MonoBehaviour:
   _dropSnapMode: 3
   _dropProximityTransformUseSelf: 1
   _dropProximityTransform: {fileID: 0}
+--- !u!114 &2862923331480021650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8214089051725258899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ba1b29fd27bd56dba80f54c08a47c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
