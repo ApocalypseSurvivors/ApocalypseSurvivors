@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxHealth = 100;
     [SerializeField] float bulletForceMultiplier = 5;
     private HealthBar healthBar;
+    [SerializeField] private AudioClip alert;
     [SerializeField] private AudioClip attackAudio;
     public GameObject bloodSprayEffect;
     public bool isDead = false;
@@ -236,6 +237,11 @@ public class Enemy : MonoBehaviour
             navAgent.enabled = false;
         }
         
+    }
+
+    public void playAlertSound() {
+        Debug.Log("Debug alert");
+        playAudio(alert);
     }
 
     private void setTarget() {

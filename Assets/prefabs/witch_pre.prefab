@@ -2584,10 +2584,12 @@ MonoBehaviour:
   attackDamage: 10
   maxHealth: 100
   bulletForceMultiplier: 5
+  alert: {fileID: 8300000, guid: 377b0083e4dd5d2c3a6ee98a93ae955d, type: 3}
   attackAudio: {fileID: 8300000, guid: 834e663f83ad48dda97f82bbb60499eb, type: 3}
   bloodSprayEffect: {fileID: 220912503297125660, guid: 9b163ec5ede3e11e3a12ddcff761f796,
     type: 3}
   isDead: 0
+  _jumpDuration: 0.8
 --- !u!114 &-6235337186752751946
 MonoBehaviour:
   m_ObjectHideFlags: 0

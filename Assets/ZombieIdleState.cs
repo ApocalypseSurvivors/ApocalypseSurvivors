@@ -25,7 +25,10 @@ public class ZombieIdleState : StateMachineBehaviour
        }
        float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
        if (distanceFromPlayer < detectionAreaRadius) {
-           animator.SetBool("isChasing", true);
+           if (!animator.GetBool("isChasing")) {
+                animator.GetComponent<Enemy>().playAlertSound();
+                animator.SetBool("isChasing", true);
+           }
        }
     }
 
