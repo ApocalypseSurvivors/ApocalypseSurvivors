@@ -24,12 +24,16 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _jumpDuration = 0.8f;
     private bool _onNavMeshLink = false;
+
+    private float spawnTime;
+
     private void awake() {
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnTime = Time.time;
         animator = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         actor = GetComponent<UxrActor>();
@@ -38,8 +42,10 @@ public class Enemy : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.isKinematic = true;   
         actor.DamageReceived += HandleDamage;
+        actor.DamageReceiving += HandleDamagePre;
 
         navAgent.autoTraverseOffMeshLink = false;
+        navAgent.enabled = false;
 
         healthBar = GetComponentInChildren<HealthBar>();
         if (!healthBar) {
@@ -54,6 +60,8 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
         Debug.Log("Debug enemy init success");
     }
+
+    
 
   private void StartNavMeshLinkMovement()
     {
@@ -144,7 +152,11 @@ public class Enemy : MonoBehaviour
             dropper.drop();
         }
    }
-
+    void HandleDamagePre(object sender, UxrDamageEventArgs e) {
+        if (spawning()) {
+            e.Cancel();
+        }
+    }
     void HandleDamage(object sender, UxrDamageEventArgs e) {
         float damage = e.Damage; 
         if (healthBar != null) {
@@ -182,8 +194,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private bool dead() {
+    public bool dead() {
         return actor.Life <= 0;
+    }
+
+    public bool spawning() {
+        return (Time.time - spawnTime) < 2f;
     }
 
     void CreateBloodSprayEffect(Vector3 hitpoint)
@@ -231,6 +247,12 @@ public class Enemy : MonoBehaviour
                 ReactivateNavMeshAgent();
             } else {
                 // navAgent.enabled = false;              // Disable NavMeshAgent
+            }
+
+            if (spawning()) {
+                navAgent.enabled = !spawning();
+                rb.isKinematic = false;
+            } else {
             }
         } else {
             // animator.SetBool("isWalking", false);
