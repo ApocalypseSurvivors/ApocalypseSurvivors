@@ -1978,9 +1978,24 @@ PrefabInstance:
       propertyPath: m_StoppingDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1750031264045343379, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120346647024526285, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3554158566019150135, guid: b16c00eabfa04e060aecb09a1dcd5528,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867580903243328723, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4023344743599032257, guid: b16c00eabfa04e060aecb09a1dcd5528,
@@ -1992,6 +2007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707036462421428748, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6584740310258222378, guid: b16c00eabfa04e060aecb09a1dcd5528,
         type: 3}
@@ -2046,7 +2066,7 @@ PrefabInstance:
     - target: {fileID: 6584740310258222378, guid: b16c00eabfa04e060aecb09a1dcd5528,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.5
+      value: 7.85
       objectReference: {fileID: 0}
     - target: {fileID: 6584740310258222378, guid: b16c00eabfa04e060aecb09a1dcd5528,
         type: 3}
@@ -2093,10 +2113,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7295680592507824408, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295680592507824408, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.73
+      objectReference: {fileID: 0}
     - target: {fileID: 7423016785604365706, guid: b16c00eabfa04e060aecb09a1dcd5528,
         type: 3}
       propertyPath: m_Name
       value: witch_pre (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257044652847731755, guid: b16c00eabfa04e060aecb09a1dcd5528,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4464,6 +4499,7 @@ MonoBehaviour:
   attackDamage: 10
   maxHealth: 100
   bulletForceMultiplier: 10
+  alert: {fileID: 0}
   attackAudio: {fileID: 0}
   bloodSprayEffect: {fileID: 0}
   isDead: 0
@@ -5636,6 +5672,7 @@ MonoBehaviour:
   attackDamage: 10
   maxHealth: 100
   bulletForceMultiplier: 40
+  alert: {fileID: 0}
   attackAudio: {fileID: 0}
   bloodSprayEffect: {fileID: 0}
   isDead: 0
