@@ -10,7 +10,7 @@ public class ZombieChaseState : StateMachineBehaviour
     Transform player;
 
     [SerializeField] float chaseSpeed = 6f;
-    [SerializeField] float stopChasingDistance = 21f;
+    [SerializeField] float stopChasingDistance = 40f;
     [SerializeField] float attackingDistance = 1.5f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -19,6 +19,7 @@ public class ZombieChaseState : StateMachineBehaviour
        player = GameObject.FindGameObjectWithTag("Player").transform;
        agent = animator.GetComponent<NavMeshAgent>();
        agent.speed = chaseSpeed;
+       animator.SetBool("isChasing", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -32,8 +33,8 @@ public class ZombieChaseState : StateMachineBehaviour
        float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
 
        if (distanceFromPlayer > stopChasingDistance) {
-           animator.SetBool("isChasing", false);
-            agent.isStopped = true;
+           // animator.SetBool("isChasing", false);
+            // agent.isStopped = true;
        }
        if (distanceFromPlayer < attackingDistance) {
            animator.SetBool("isAttacking", true);

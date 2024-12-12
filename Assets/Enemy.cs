@@ -250,7 +250,7 @@ public class Enemy : MonoBehaviour
             }
 
             if (spawning()) {
-                navAgent.enabled = !spawning();
+                navAgent.enabled = false;
                 rb.isKinematic = false;
             } else {
             }
