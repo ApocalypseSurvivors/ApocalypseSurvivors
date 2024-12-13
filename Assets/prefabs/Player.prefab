@@ -3645,7 +3645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00:00:00
+  m_text: "\U0001F48000:00:00"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3dc96cc77d09cccc9b3856280ce56df8, type: 2}
   m_sharedMaterial: {fileID: -8202247963044472120, guid: 3dc96cc77d09cccc9b3856280ce56df8,
@@ -7197,6 +7197,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 64bd22489e63a2ff4b0f25ea03b8ac3a, type: 3}
   - {fileID: 8300000, guid: e1d4db2f73fe897b3944afe9c33533cd, type: 3}
   - {fileID: 8300000, guid: 9102ef4c6ee8f64b4a89ff8f4fe931eb, type: 3}
+  spawnLocations: []
 --- !u!114 &5720895053280399809
 MonoBehaviour:
   m_ObjectHideFlags: 0
