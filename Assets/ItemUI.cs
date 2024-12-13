@@ -24,7 +24,8 @@ public class ItemUI : MonoBehaviour
         var grabbale = GetComponent<UxrGrabbableObject>();
         if (dis < range && 
                 // dot > 0 && 
-                !grabbale.IsBeingGrabbed) {
+                !grabbale.IsBeingGrabbed
+                && !grabbale.CurrentAnchor) {
             if (dot <= 0) {
                 UxrCompass.Instance.SetTarget(transform, UxrCompassDisplayMode.Look);
             } else {
