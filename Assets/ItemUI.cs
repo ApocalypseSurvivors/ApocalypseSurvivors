@@ -31,6 +31,11 @@ public class ItemUI : MonoBehaviour
             } else {
                 UxrCompass.Instance.SetTarget(transform, UxrCompassDisplayMode.Grab);
             }
+            Invoke("setNull", 3);
         }
+    }
+
+    private void setNull() {
+        UxrCompass.Instance.SetTarget(null);
     }
 }
