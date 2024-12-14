@@ -7,7 +7,7 @@ using UltimateXR.Manipulation;
 
 public class ItemUI : MonoBehaviour
 {
-    public float range = 2;
+    public float range = 10;
     // Start is called before the first frame update
     void Start()
     {

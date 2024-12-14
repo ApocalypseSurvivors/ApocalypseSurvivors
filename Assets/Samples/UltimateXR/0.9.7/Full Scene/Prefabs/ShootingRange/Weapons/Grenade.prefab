@@ -320,8 +320,7 @@ MonoBehaviour:
   _previewGrabPosesMode: 3
   _previewPosesRegenerationType: 0
   _previewPosesRegenerationIndex: -1
-  _selectedAvatarForGrips: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b,
-    type: 3}
+  _selectedAvatarForGrips: {fileID: 0}
   _firstGrabPointIsMain: 1
   _grabPoint:
     _editorFoldout: 1
@@ -461,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ba1b29fd27bd56dba80f54c08a47c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 2
+  range: 10
 --- !u!1 &3229191754253191826
 GameObject:
   m_ObjectHideFlags: 0

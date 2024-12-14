@@ -1554,8 +1554,7 @@ MonoBehaviour:
   _previewGrabPosesMode: 3
   _previewPosesRegenerationType: 0
   _previewPosesRegenerationIndex: -1
-  _selectedAvatarForGrips: {fileID: 8925323024618626732, guid: e99efd5a98f8063dbb3a3ff96c9290d1,
-    type: 3}
+  _selectedAvatarForGrips: {fileID: 0}
   _firstGrabPointIsMain: 1
   _grabPoint:
     _editorFoldout: 1
@@ -1786,7 +1785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ba1b29fd27bd56dba80f54c08a47c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 2
+  range: 10
 --- !u!114 &-3022956802672983997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,6 +1981,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8336629437534177657}
     m_Modifications:
+    - target: {fileID: -8224738478574628798, guid: d0a5e2e7972347e42a3c7ae966edf222,
+        type: 3}
+      propertyPath: range
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 129524562939741791, guid: d0a5e2e7972347e42a3c7ae966edf222,
         type: 3}
       propertyPath: m_Enabled
