@@ -138,7 +138,8 @@ The game takes place in a meticulously crafted **4-way street intersection** sur
 ## 🎥 Media & Resources
 
 ### Gameplay Videos
-- **[Walkthrough Video](https://www.youtube.com/watch?v=U-XgCW5fjq4)** - Complete gameplay demonstration
+- [![Apocalypse Survivors Demo](https://img.youtube.com/vi/U-XgCW5fjq4/0.jpg)](https://www.youtube.com/watch?v=U-XgCW5fjq4) 
+- Complete gameplay demonstration
 
 ### Screenshots
 - **Horror atmosphere** with realistic urban decay
